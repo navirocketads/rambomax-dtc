@@ -1,0 +1,584 @@
+<!-- ===== Announcement Bar + Header (Rambo Max theme) ===== -->
+<style>
+    :root{
+      --bg:#0B0B0C; --panel:#151518; --muted:#8A8A93; --text:#F2F2F3;
+      --accent:#E45A1F; --accent-700:#C24A1A; --accent-900:#7A2E0F;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  
+    /* 1) Announcement bar */
+    .announce{
+      background:linear-gradient(0deg,var(--accent-900),var(--accent));
+      color:#fff; text-align:center; padding:.65rem 1rem;
+      font-weight:800; letter-spacing:.02em;
+    }
+    .announce .code{
+      display:inline-block; margin:0 .4rem; padding:.2rem .55rem;
+      background:rgba(0,0,0,.22); border:1px solid rgba(255,255,255,.25);
+      border-radius:10px; font-family:ui-monospace,Menlo,Consolas,monospace;
+    }
+  
+    /* 2) Header */
+    .header{position:sticky; top:0; z-index:50;
+      background:rgba(11,11,12,.72); backdrop-filter:saturate(120%) blur(4px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .header-inner{
+      max-width:1200px; margin:0 auto; padding:.85rem 1rem;
+      display:flex; align-items:center; gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:900; letter-spacing:.04em}
+    .brand-dot{width:8px; height:8px; border-radius:50%; background:var(--accent)}
+    .spacer{flex:1}
+  
+    /* nav */
+    .nav{display:flex; align-items:center; gap:1.2rem}
+    .nav a{color:#D8D8DB; font-weight:600; text-decoration:none}
+    .nav a:hover{color:#fff}
+  
+    /* CTA + cart */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      background:var(--accent); color:#fff; padding:.7rem 1rem; border-radius:999px; font-weight:900;
+      box-shadow:0 6px 18px rgba(228,90,31,.35);
+    }
+    .btn:hover{background:var(--accent-700)}
+    .cart{
+      position:relative; margin-left:.25rem; display:inline-flex; align-items:center; justify-content:center;
+      width:40px; height:40px; border-radius:999px; background:#1E1E22; border:1px solid rgba(255,255,255,.06);
+    }
+    .cart-badge{
+      position:absolute; top:-6px; right:-6px; background:var(--accent); color:#fff; font-size:.7rem;
+      padding:.1rem .4rem; border-radius:999px; border:2px solid var(--bg); font-weight:900;
+    }
+  
+    /* mobile */
+    .nav-toggle{
+      display:none; width:42px; height:42px; border-radius:10px; border:1px solid rgba(255,255,255,.08);
+      background:#1A1A1E; color:#fff;
+    }
+    .bars{display:block; width:18px; height:2px; background:#fff; position:relative}
+    .bars::before,.bars::after{content:""; position:absolute; left:0; width:18px; height:2px; background:#fff}
+    .bars::before{top:-6px} .bars::after{top:6px}
+  
+    @media (max-width: 960px){
+      .nav{display:none; position:absolute; left:0; right:0; top:100%;
+           background:#121214; border-bottom:1px solid rgba(255,255,255,.06);
+           padding:1rem; flex-direction:column}
+      .nav.open{display:flex}
+      .nav-toggle{display:inline-flex; align-items:center; justify-content:center}
+    }
+
+    .rmx-price-now{font-size:2.55rem;font-weight:900;display:flex;align-items:baseline;gap:.25rem}
+.rmx-unit{font-size:1rem;font-weight:800;color:var(--muted)}
+.rmx-total{font-weight:900}
+
+.rmx-day{background:#101114;border:1px solid rgba(255,255,255,.12)}
+
+
+  </style>
+  
+  <!-- 1) Announcement Bar -->
+  <div class="announce">
+    LAUNCH SPECIAL • Use code <span class="code">NEW10</span> for <strong>$10 OFF</strong> + Free Shipping on your first order
+  </div>
+  
+  <!-- 2) Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <strong>RAMBO&nbsp;MAX</strong><span class="brand-dot" aria-hidden="true"></span>
+      </div>
+  
+      <div class="spacer"></div>
+  
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="bars" aria-hidden="true"></span>
+      </button>
+  
+      <nav class="nav" id="primary-nav">
+        <a href="#kit">50% OFF Launch Kit</a>
+        <a href="#science">Science</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="#buy">TRY IT NOW →</a>
+        <a class="cart" href="#cart" aria-label="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#D9D9DF" aria-hidden="true">
+            <path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.44A2 2 0 0 0 10 19h9v-2h-9l1.1-2h6.45a2 2 0 0 0 1.79-1.11l3.58-7.16A1 1 0 0 0 22 4H7z"/>
+          </svg>
+          <span class="cart-badge">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+  
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    }
+  </script>
+  <!-- ===== /Announcement Bar + Header ===== -->
+  
+<!-- ===== Rambo Max — Offer Hero (brand-styled) [FIXED] ===== -->
+<style>
+    :root{
+      --bg:#0A0A0B; --panel:#111214; --panel-2:#16181B; --stroke:rgba(255,255,255,.08);
+      --muted:#9DA0A6; --text:#F2F2F3; --accent:#E45A1F; --accent-700:#C24A1A; --accent-900:#7A2E0F;
+      --gold:#F4B25E; --radius:18px; --shadow:0 14px 40px rgba(0,0,0,.55);
+    }
+    .rmx *{box-sizing:border-box}
+    .rmx{color:var(--text); background:var(--bg); font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  
+    .rmx-offer{position:relative; overflow:hidden; border-top:1px solid var(--stroke);}
+    /* (opcional) se quiser o fundo Himalaya, reative o ::before que você tirou */
+  
+    .rmx-wrap{max-width:1200px; margin:0 auto; padding:2rem 1rem 3rem; display:grid; grid-template-columns:1.05fr 1fr; gap:2rem}
+    @media (max-width:980px){ .rmx-wrap{grid-template-columns:1fr; padding:1.2rem 1rem 2rem} }
+  
+    .rmx-frame{background:linear-gradient(180deg,var(--panel),var(--panel-2)); border:1px solid var(--stroke);
+      border-radius:var(--radius); padding:14px; box-shadow:var(--shadow); position:relative;}
+    .rmx-frame::after,.rmx-frame::before{content:""; position:absolute; pointer-events:none; width:90px; height:90px;
+      border-radius:12px; border:2px solid var(--accent); opacity:.85;}
+    .rmx-frame::after{top:10px; left:10px; border-right:none; border-bottom:none}
+    .rmx-frame::before{bottom:10px; right:10px; border-left:none; border-top:none}
+    .rmx-stage{min-height:430px; display:grid; place-items:center; border-radius:12px;
+      background:linear-gradient(180deg,#1B1D21 0%, #121316 100%); position:relative; overflow:hidden}
+    .rmx-stage img{max-height:380px; border-radius:12px; box-shadow:0 22px 52px rgba(0,0,0,.55)}
+  
+    .rmx-ribbon{position:absolute; top:18px; left:-18px; z-index:2;
+      background:linear-gradient(90deg,var(--accent-900),var(--accent));
+      color:#fff; padding:.4rem .9rem; font-weight:900; letter-spacing:.03em;
+      transform:skew(-12deg); border:1px solid rgba(255,255,255,.15); box-shadow:0 10px 24px rgba(228,90,31,.35);}
+    .rmx-ribbon span{display:inline-block; transform:skew(12deg)}
+  
+    .rmx-panel{display:flex;flex-direction:column;gap:1rem}
+    .rmx-eyebrow{color:#EDE3DA;opacity:.8;text-transform:uppercase;letter-spacing:.08em;font-weight:800;font-size:.82rem}
+    .rmx-title{font-size:2.2rem;line-height:1.15;margin:.2rem 0 .2rem;font-weight:900}
+    .rmx-stars{display:flex;align-items:center;gap:.45rem;color:#FFC86B;font-weight:800}
+  
+    .rmx-switch{display:inline-flex;background:#0F1012;border:1px solid var(--stroke);border-radius:999px;overflow:hidden}
+    .rmx-switch input{display:none}
+    .rmx-switch label{padding:.62rem 1rem; cursor:pointer; font-weight:900; color:#D9DBE1; position:relative;}
+    .rmx-switch label:not(:last-child){border-right:1px solid var(--stroke)}
+    .rmx-switch input:checked + label{color:#fff; background:linear-gradient(0deg,var(--accent-900),var(--accent));
+      box-shadow:0 10px 26px rgba(228,90,31,.35) inset, 0 8px 22px rgba(228,90,31,.25);}
+    .rmx-subnote{font-size:.86rem;color:var(--muted);margin-top:.35rem}
+  
+    .rmx-price{display:flex;align-items:baseline;gap:.65rem;flex-wrap:wrap}
+    .rmx-price-now{font-size:2.55rem;font-weight:900;display:flex;align-items:baseline;gap:.25rem}
+    .rmx-unit{font-size:1rem;font-weight:800;color:var(--muted)}  /* <— faltava */
+    .rmx-price-was{color:var(--muted);text-decoration:line-through;font-weight:800}
+    .rmx-pill{display:inline-flex;align-items:center;gap:.4rem;background:#1F2024;border:1px solid var(--stroke);
+      padding:.38rem .65rem;border-radius:999px;font-weight:900}
+    .rmx-save{color:var(--gold);font-weight:900}
+  
+    .rmx-list{list-style:none;margin:.2rem 0 0;padding:0;display:grid;gap:.5rem}
+    .rmx-li{display:flex;gap:.6rem}
+    .rmx-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:.45rem}
+  
+    .rmx-gifts{display:flex;gap:.6rem;flex-wrap:wrap}
+    .rmx-gift{display:flex;align-items:center;gap:.5rem;background:#15161A;border:1px solid var(--stroke);
+      padding:.55rem .7rem;border-radius:10px;color:#E4E6EB;font-weight:800}
+    .rmx-gift img{width:34px;height:34px;border-radius:6px;object-fit:cover}
+  
+    .rmx-ctas{display:flex;gap:.65rem;flex-wrap:wrap}
+    .rmx-btn{border-radius:999px;padding:1rem 1.1rem;font-weight:900;text-decoration:none;display:inline-flex;align-items:center;gap:.6rem}
+    .rmx-btn.primary{background:var(--accent);color:#fff;box-shadow:0 14px 30px rgba(228,90,31,.35)}
+    .rmx-btn.primary:hover{background:var(--accent-700)}
+    .rmx-btn.secondary{background:#24262B;border:1px solid var(--stroke);color:#F0F2F6}
+    .rmx-badges{display:flex;gap:.6rem;flex-wrap:wrap}
+    .rmx-badge{background:#141518;border:1px solid var(--stroke);padding:.5rem .7rem;border-radius:10px;color:#CFCFD6;font-weight:800}
+    .rmx-guarantee{border:1px dashed rgba(255,255,255,.16);border-radius:12px;padding:.85rem 1rem;background:rgba(20,22,25,.6);color:#D9DBE2}
+  </style>
+  
+  <section class="rmx rmx-offer" id="offer">
+    <div class="rmx-wrap">
+      <aside class="rmx-frame">
+        <div class="rmx-ribbon" id="rmxRibbon" style="display:none;"><span>BEST VALUE</span></div>
+        <div class="rmx-stage">
+          <img id="rmxImage" src="https://via.placeholder.com/720x540.png?text=RAMBO+MAX+%E2%80%94+1+BOTTLE" alt="Rambo Max — 1 Bottle">
+        </div>
+      </aside>
+  
+      <div class="rmx-panel">
+        <div>
+          <div class="rmx-eyebrow">Natural Testosterone Support</div>
+          <h2 class="rmx-title"><span id="rmxKitTitle">Basic</span> — <span id="rmxKitSub">1 Bottle · 30-Day Supply</span></h2>
+          <div class="rmx-stars">★★★★★ <span style="color:var(--muted);font-weight:700">&nbsp;1,298 reviews</span></div>
+        </div>
+  
+        <div>
+          <div class="rmx-switch" role="tablist" aria-label="Choose your kit">
+            <input type="radio" name="rmx-kit" id="rmx-k1" value="one" checked><label for="rmx-k1" role="tab">1 Bottle</label>
+            <input type="radio" name="rmx-kit" id="rmx-k3" value="three"><label for="rmx-k3" role="tab">3 Bottles <span style="opacity:.8">· Most Popular</span></label>
+            <input type="radio" name="rmx-kit" id="rmx-k6" value="six"><label for="rmx-k6" role="tab">6 Bottles <span style="opacity:.8">· Best Value</span></label>
+          </div>
+          <div class="rmx-subnote">Switch to preview pricing, savings and gifts.</div>
+        </div>
+  
+        <!-- Pricing -->
+        <div>
+          <div class="rmx-price">
+            <div class="rmx-price-now" id="rmxNow">$59 <span class="rmx-unit">/ bottle</span></div>
+            <div class="rmx-price-was" id="rmxWas">$597</div>
+            <div class="rmx-pill rmx-total" id="rmxTotal">Total: $177</div>
+            <div class="rmx-pill rmx-save" id="rmxSave">Save $420</div>
+            <div class="rmx-pill rmx-day" id="rmxPerDay">Only $1.96 per day</div>
+          </div>
+          <div class="rmx-subnote" id="rmxNote">Free US Shipping on 3+ bottles</div>
+        </div>
+  
+        <ul class="rmx-list">
+          <li class="rmx-li"><span class="rmx-dot"></span> 3rd-party tested · GMP certified</li>
+          <li class="rmx-li"><span class="rmx-dot"></span> Made in USA · Discreet shipping</li>
+          <li class="rmx-li"><span class="rmx-dot"></span> 180-Day Money-Back Guarantee</li>
+        </ul>
+  
+        <div class="rmx-gifts" id="rmxGifts"></div>
+  
+        <div class="rmx-ctas">
+          <a class="rmx-btn primary" id="rmxBuy" href="#checkout-one" data-sku="RMX-1">BUY IT NOW →</a>
+          <a class="rmx-btn secondary" href="#science">See the Science</a>
+        </div>
+  
+        <div class="rmx-badges">
+          <div class="rmx-badge">SSL Secure</div>
+          <div class="rmx-badge">180-Day Guarantee</div>
+          <div class="rmx-badge">Free Shipping</div>
+          <div class="rmx-badge">Safe Checkout</div>
+        </div>
+  
+        <div class="rmx-guarantee">
+          <strong>Zero-Risk Guarantee:</strong> Try Rambo Max for 180 days. If you don’t feel a clear boost in energy,
+          focus and performance, we’ll refund you—no questions asked.
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    const RMX_KITS = {
+      one:  { ribbon:"", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/RAMBOMAX-1BTS-DTC.jpg",
+              title:"Basic", sub:"1 Bottle · 30-Day Supply", was:199, total:69,  per:69, save:130, days:30,
+              note:"Free US Shipping on 3+ bottles", href:"https://pay.gvitalabs.com/checkout/178934197:1", sku:"RMX-1", gifts:[] },
+      three:{ ribbon:"MOST POPULAR", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/RAMBOMAX-3BTS-DTC.jpg",
+              title:"Most Popular", sub:"3 Bottles · 90-Day Supply", was:597, total:177, per:59, save:420, days:90,
+              note:"Includes FREE US Shipping + 2 Gifts", href:"https://pay.gvitalabs.com/checkout/178934436:1", sku:"RMX-3",
+              gifts:[{name:"Lesbian Trick - Sexual Performance Video Lessons($140) — FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/testoGuide.jpg?text=TIN"},
+                     {name:"1K Testosterone Guide ($49) - FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/testoGuide.jpg?text=EBOOK"}] },
+      six:  { ribbon:"BEST VALUE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/RAMBOMAX-6BTS-DTC.jpg",
+              title:"Best Value", sub:"6 Bottles · 180-Day Supply", was:1188, total:294, per:49, save:894, days:180,
+              note:"FREE US Shipping + 3 Gifts + Biggest Savings", href:"https://pay.gvitalabs.com/checkout/178934426:1", sku:"RMX-6",
+              gifts:[{name:"Rambo Max App - Daily Progress Track ($97/monthly) - FREE ", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/ramboMaxAPP.jpg?text=TIN"},
+                     {name:"Lesbian Trick - Sexual Performance Video Lessons($140) — FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/testoGuide.jpg?text=EBOOK"},
+                     {name:"1K Testosterone Guide ($49) - FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/testoGuide.jpg?text=APP"}] }
+    };
+  
+    const $ = s => document.querySelector(s);
+    const el = {
+      image: $('#rmxImage'),
+      ribbon: $('#rmxRibbon'),
+      t: $('#rmxKitTitle'), s: $('#rmxKitSub'),
+      now: $('#rmxNow'), was: $('#rmxWas'),
+      note: $('#rmxNote'), gifts: $('#rmxGifts'),
+      buy: $('#rmxBuy')
+    };
+    const fmt = n => `$${Number(n).toLocaleString()}`; // <— única definição
+    const fmt2 = n => `$${Number(n).toFixed(2)}`;
+
+  
+    function updateKit(key){
+      const k = RMX_KITS[key];
+  
+      // ribbon
+      if (k.ribbon){ el.ribbon.style.display='block'; el.ribbon.querySelector('span').textContent=k.ribbon; }
+      else { el.ribbon.style.display='none'; }
+  
+      // imagem + textos
+      el.image.src = k.img; el.image.alt = `Rambo Max — ${k.sub}`;
+      el.t.textContent = k.title; el.s.textContent = k.sub;
+  
+      // preços (grande = per bottle; pill = total)
+      el.now.innerHTML = `${fmt(k.per)} <span class="rmx-unit">/ bottle</span>`;
+      el.was.textContent = fmt(k.was);               // riscado (total de tabela)
+      document.getElementById('rmxTotal').textContent = `Total: ${fmt(k.total)}`;
+      document.getElementById('rmxSave').textContent  = `Save ${fmt(k.save)}`;
+  
+      const perDay = k.days ? (k.total / k.days) : (k.per / 30);
+document.getElementById('rmxPerDay').textContent = `Only ${fmt2(perDay)} per day`;
+      // nota
+      el.note.textContent = k.note || '';
+  
+      // gifts
+      el.gifts.innerHTML = '';
+      (k.gifts||[]).forEach(g=>{
+        const d = document.createElement('div');
+        d.className = 'rmx-gift';
+        d.innerHTML = `<img src="${g.img}" alt=""><span>${g.name}</span>`;
+        el.gifts.appendChild(d);
+      });
+  
+      // CTA
+      el.buy.href = k.href; el.buy.dataset.sku = k.sku;
+    }
+  
+    document.querySelectorAll('input[name="rmx-kit"]').forEach(r=>{
+      r.addEventListener('change', e=>updateKit(e.target.value));
+    });
+    updateKit('one');
+  </script>
+  <!-- ===== /Offer Hero [FIXED] ===== -->
+  
+
+  <!-- TESTIMONIALS – Mobile-first, uniform image sizing -->
+<section class="rm-testimonials" aria-label="Customer results with Rambo Max">
+    <style>
+      .rm-testimonials{
+        --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --ink:#0f172a; --muted:#475569; --line:#e5e7eb; --soft:#f8fafc; --brand:#ef4444;
+        font-family:var(--font); color:var(--ink); padding:16px 12px; max-width:980px; margin:0 auto;
+      }
+      .rm-testimonials .head{
+        text-align:center; margin:0 0 14px;
+      }
+      .rm-testimonials .kicker{
+        font-weight:900; color:#ef4444; font-size:clamp(16px,3vw,18px); letter-spacing:.3px; margin:4px 0 6px;
+      }
+      .rm-testimonials h2{
+        font-weight:900; font-size:clamp(22px,6vw,34px); line-height:1.15; margin:0;
+      }
+      .rm-grid{
+        display:grid; gap:12px;
+        grid-template-columns: 1fr; /* mobile first */
+      }
+      @media (min-width:680px){
+        .rm-grid{ grid-template-columns: 1fr 1fr; }
+      }
+      @media (min-width:980px){
+        .rm-grid{ gap:16px; }
+      }
+  
+      /* Card */
+      .rm-card{
+        background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+        box-shadow:0 1px 0 rgba(15,23,42,.03);
+        display:flex; flex-direction:column;
+      }
+      /* Image wrapper enforces uniform display regardless of source aspect ratio */
+      .rm-card .media{
+        width:100%; height:220px; background:#e2e8f0; position:relative; overflow:hidden;
+      }
+      @media (min-width:680px){ .rm-card .media{ height:260px; } }
+      .rm-card .media img{
+        width:100%; height:100%; object-fit:cover; object-position:center;
+        display:block;
+      }
+  
+      .rm-card .body{ padding:12px 12px 14px; }
+      .rm-card .top{
+        display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap;
+      }
+      .rm-card .name{
+        font-weight:900; font-size:15px;
+      }
+      .rm-card .age{
+        color:#0f172a; background:#fff7ed; border:1px solid #ffedd5; border-radius:999px;
+        padding:3px 8px; font-weight:800; font-size:12px;
+      }
+      .rm-card .duration{
+        margin-left:auto; color:#065f46; background:#ecfdf5; border:1px solid #d1fae5;
+        border-radius:999px; padding:3px 8px; font-weight:800; font-size:12px;
+      }
+      .rm-card blockquote{
+        margin:8px 0 0; color:#0f172a; font-size:15px; line-height:1.5;
+      }
+      .rm-card blockquote em{ color:#111827; }
+  
+      /* Subtle footer note */
+      .rm-note{
+        text-align:center; color:var(--muted); font-size:12px; margin-top:10px;
+      }
+    </style>
+  
+    <div class="head">
+      <div class="kicker">Real Men. Real Results.</div>
+      
+    </div>
+  
+    <div class="rm-grid">
+  
+      <!-- 1 -->
+      <article class="rm-card">
+        <div class="media">
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/DEP3.png"
+               alt="Daniel H., 54 — after 3 weeks using Rambo Max" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <div class="name">Daniel H.</div>
+            <div class="age">Age 54</div>
+            <div class="duration">3 weeks of use</div>
+          </div>
+          <blockquote>
+            “I didn’t expect much in the beginning… but already after 3 weeks I started waking up with morning erections again. Not as strong as they are now, but enough to give me hope. I knew this wasn’t an overnight fix, so I stayed consistent. Today I’m 4 months in, and my confidence is fully back.”
+          </blockquote>
+        </div>
+      </article>
+  
+      <!-- 2 -->
+      <article class="rm-card">
+        <div class="media">
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/DEP4.png"
+               alt="Carlos M., 57 — after 4 months using Rambo Max" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <div class="name">Carlos M.</div>
+            <div class="age">Age 57</div>
+            <div class="duration">4 months of use</div>
+          </div>
+          <blockquote>
+            “I wasted money on blue pills for years. They worked for a few hours, but left me drained. With Rambo Max, after 4 months, my erections are natural, hard, and lasting. The best part? I don’t depend on chemicals anymore. My wife can finally trust me in bed again.”
+          </blockquote>
+        </div>
+      </article>
+  
+      <!-- 3 -->
+      <article class="rm-card">
+        <div class="media">
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/DEP5.png"
+               alt="Richard P., 62 — after 6 months using Rambo Max" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <div class="name">Richard P.</div>
+            <div class="age">Age 62</div>
+            <div class="duration">6 months of use</div>
+          </div>
+          <blockquote>
+            “I thought 6 months was too long. Now I see it’s the exact treatment I needed. My ED is gone, my stamina is like it was in my 30s, and my mood completely changed. It’s not just sex — my whole life feels lighter and more powerful.”
+          </blockquote>
+        </div>
+      </article>
+  
+      <!-- 4 -->
+      <article class="rm-card">
+        <div class="media">
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/DEP6.png"
+               alt="John S., 55 — after 9 months using Rambo Max" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <div class="name">John S.</div>
+            <div class="age">Age 55</div>
+            <div class="duration">9 months of use</div>
+          </div>
+          <blockquote>
+            “At 9 months in, I don’t even recognize myself anymore. Erections every day, energy through the roof, and even my doctor said my blood pressure and circulation improved. It’s not just about sex — this feels like a second chance at life.”
+          </blockquote>
+        </div>
+      </article>
+  
+      <!-- 5 -->
+      <article class="rm-card">
+        <div class="media">
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/DEP7.jpg"
+               alt="Peter W., 48 — after 5 weeks using Rambo Max" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <div class="name">Peter W.</div>
+            <div class="age">Age 48</div>
+            <div class="duration">5 weeks of use</div>
+          </div>
+          <blockquote>
+            “I’ll be honest… the first two weeks I didn’t see much. But in the fifth week, it clicked. Suddenly, I lasted longer and felt harder than I had in years. My wife’s reaction? She said I was finally acting like the man she married.”
+          </blockquote>
+        </div>
+      </article>
+  
+      <!-- 6 -->
+      <article class="rm-card">
+        <div class="media">
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/DEP2.png"
+               alt="Michael D., 60 — after 6 to 9 months using Rambo Max" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <div class="name">Michael D.</div>
+            <div class="age">Age 60</div>
+            <div class="duration">6–9 months of use</div>
+          </div>
+          <blockquote>
+            “After 6 months I was satisfied, but I decided to keep going. At 9 months, I can say this is more than a fix — it’s an upgrade. Erections stronger, recovery faster, and energy for everything in life. I stocked 12 bottles because I’m not taking chances again.”
+          </blockquote>
+        </div>
+      </article>
+  
+      <!-- 7 (id 8) -->
+      <article class="rm-card">
+        <div class="media">
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/DEP1.png"
+               alt="Rick A., 64 — after 6 months using Rambo Max" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="top">
+            <div class="name">Rick A.</div>
+            <div class="age">Age 64</div>
+            <div class="duration">6 months of use</div>
+          </div>
+          <blockquote>
+            <em>“When I started with Rambo Max, I just wanted to feel normal again… to stop disappointing my wife. But what happened after 6 months shocked even me. I didn’t just get my erections back — I got my youth back. Energy through the roof, stamina unshakable, and the kind of confidence I thought I’d lost forever… Rambo Max didn’t just save my sex life. It gave me back my edge as a man.”</em>
+          </blockquote>
+        </div>
+      </article>
+  
+    </div>
+  
+    <div class="rm-note">Individual results may vary. Consistency over months is key.</div>
+  </section>
+
+  <!-- ===== Guarantee Section ===== -->
+<style>
+    .rmx-guarantee-section{
+      background:linear-gradient(180deg,#0C0C0D 0%, #0A0A0B 100%);
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:3rem 1rem;
+    }
+    .rmx-guarantee-wrap{
+      max-width:1000px; margin:0 auto;
+      display:flex; flex-direction:column; align-items:center; gap:1.5rem;
+    }
+    .rmx-guarantee-wrap img{
+      max-width:640px; width:100%; height:auto;
+      border-radius:18px; box-shadow:0 20px 40px rgba(0,0,0,.55);
+    }
+    .rmx-guarantee-text{
+      text-align:center; max-width:720px;
+      font-size:1.1rem; line-height:1.6; color:#D9DBE2;
+    }
+    .rmx-guarantee-text strong{
+      color:#fff; font-weight:900;
+    }
+  </style>
+  
+  <section class="rmx-guarantee-section">
+    <div class="rmx-guarantee-wrap">
+      <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/garantiaRAMBO-DTC.jpg" 
+           alt="Rambo Max Guarantee">
+      <div class="rmx-guarantee-text">
+        <strong>180-Day Ironclad Guarantee:</strong> Try Rambo Max completely risk-free.  
+        If you don’t feel a significant boost in your performance, vitality, and confidence,  
+        simply send it back — and we’ll refund every penny. No questions asked.
+      </div>
+    </div>
+  </section>
+  <!-- ===== /Guarantee Section ===== -->
+  

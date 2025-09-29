@@ -1,0 +1,404 @@
+<!-- ===== Paste into Elementor: Men's Health style article (with full copy) ===== -->
+<div id="mag-article">
+    <style>
+      /* ===== Scope & Reset ===== */
+      #mag-article, #mag-article * { box-sizing: border-box; }
+      #mag-article { --max: 900px; --brand:#0c131a; --accent:#177b4d; --gold:#c7a559; --muted:#6b7280; --ink:#101418; --soft:#f6f7f9; background:#fff; color:var(--ink); font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif; line-height:1.65; }
+      #mag-article img { max-width:100%; height:auto; display:block; border-radius:8px; }
+      #mag-article .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+      #mag-article h1 { font-size: clamp(1.8rem, 2.6vw + 1.2rem, 2.6rem); line-height:1.15; letter-spacing:.3px; margin:.35rem 0 .75rem; font-weight: 800; }
+      #mag-article h2 { font-size: 1.25rem; letter-spacing:.6px; text-transform: uppercase; font-weight:800; margin:1.8rem 0 .4rem; }
+      #mag-article h3 { font-size:1.05rem; font-weight:800; letter-spacing:.4px; text-transform:uppercase; margin:1.4rem 0 .3rem }
+      #mag-article p { margin: .9rem 0; }
+      #mag-article .muted { color: var(--muted); }
+      #mag-article .caps { text-transform: uppercase; letter-spacing:.06em; }
+      #mag-article .divider { height:1px; background:#e5e7eb; margin:20px 0; }
+  
+      /* ===== Header / Masthead ===== */
+      #mag-article .masthead { background: var(--brand); color:#fff; }
+      #mag-article .masthead .wrap { padding:16px 20px; }
+      #mag-article .brand { font-weight:900; font-size:1.35rem; }
+      #mag-article .brand-bar { height:6px; background: var(--gold); margin-top:8px; border-radius:2px; }
+  
+      /* ===== Breadcrumb ===== */
+      #mag-article .crumbs { color:#2b333a; font-weight:700; padding:18px 0 4px; }
+      #mag-article .crumbs a { color:#2b333a; text-decoration:none; }
+      #mag-article .crumbs span { color:#64748b; }
+  
+      /* ===== Underline accent ===== */
+      #mag-article .underline { height:6px; width:120px; background: var(--accent); border-radius:4px; margin:.8rem 0 1rem; }
+  
+      /* ===== Byline block ===== */
+      #mag-article .byline { display:grid; grid-template-columns:56px 1fr; gap:14px; align-items:center; }
+      #mag-article .avatar { width:56px; height:56px; border-radius:50%; object-fit:cover; border:2px solid #e5e7eb; }
+      #mag-article .meta { font-size:.95rem; }
+      #mag-article .meta strong { display:block; }
+  
+      /* ===== Social counters ===== */
+      #mag-article .socials { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0 6px; }
+      #mag-article .soc { border:1px solid #e5e7eb; border-radius:10px; padding:10px 12px; display:flex; align-items:center; justify-content:center; gap:8px; background:#fff; font-weight:700; }
+      #mag-article .soc small { display:block; font-weight:600; color:#111827; }
+  
+      /* ===== Featured in ===== */
+      #mag-article .featured { border:2px solid #cfe7da; padding:20px; border-radius:14px; background:#f7fbf9; text-align:center; }
+      #mag-article .featured h4 { margin:0 0 12px; font-weight:900; letter-spacing:.12em; color:#0a2150; }
+      #mag-article .logos { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; opacity:.55; filter:grayscale(100%); }
+      @media (max-width:900px){ #mag-article .logos { grid-template-columns:repeat(3,1fr); } }
+      @media (max-width:520px){ #mag-article .logos { grid-template-columns:repeat(2,1fr); } }
+  
+      /* ===== Pull quote ===== */
+      #mag-article .pull { font-size:1.15rem; font-weight:800; color:#0b1f5a; line-height:1.45; margin:18px 0 6px; }
+  
+      /* ===== Body typography ===== */
+      #mag-article .body { font-size:1.05rem; }
+      #mag-article .body strong { font-weight:800; }
+      #mag-article .body em { font-style:italic; }
+  
+      /* ===== Back to top button ===== */
+      #mag-article .to-top { position: fixed; right: 18px; bottom: 18px; width: 46px; height: 46px; border-radius:999px; border:none; background:#0f1a2b; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.25); cursor:pointer; opacity:.92; z-index:20; }
+      #mag-article .to-top.hidden { display:none; }
+  
+      /* ===== Image caption ===== */
+      #mag-article figure { margin: 14px 0; }
+      #mag-article figcaption { font-size:.9rem; color:#6b7280; margin-top:6px; text-align:center; }
+      /* CTA button */
+      #mag-article .btn { display:inline-block; background:#177b4d; color:#fff; padding:14px 18px; border-radius:12px; font-weight:900; text-decoration:none; }
+    </style>
+  
+    <!-- Masthead -->
+    <header class="masthead">
+      <div class="wrap">
+        <div class="brand">Men's Health Magazine</div>
+        <div class="brand-bar"></div>
+      </div>
+    </header>
+  
+    <!-- Article container -->
+    <article class="wrap">
+      <!-- Breadcrumb -->
+      <!-- <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="#">Home</a> <span>›</span> <a href="#">Men’s Wellness</a> <span>›</span> Libido-Boosting Alternatives
+      </nav>
+   -->
+      <!-- Headline -->
+      <h1>BANNED BY BIG PHARMA — The New “30-MINUTE MALE PERFORMANCE CAPS” Has Doctors Filing EMERGENCY PETITIONS To BAN IT</h1>
+      <div class="underline"></div>
+  
+      <!-- Byline / Meta -->
+      <section class="byline">
+        <img class="avatar" src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Screenshot-2025-09-29-at-04.53.00.jpg" alt="Author">
+        <div class="meta">
+          <div class="muted">Mon. Sep 28th, 2025 | 10:45 am EST — <strong>214,790 views</strong></div>
+          <div><strong>By Dylan Masters</strong><br></div>
+        </div>
+      </section>
+  
+      <!-- Hero image -->
+        <!-- VTurb SmartPlayer -->
+<div style="max-width:900px;margin:0 auto">
+    <vturb-smartplayer id="vid-68d9d702f04f55b334a574b8" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/d59c0ebe-8eca-4f16-bfc0-58d2b6b3a9cc/players/68d9d702f04f55b334a574b8/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+  </div>
+  
+      <!-- Social counters
+      <div class="socials">
+        <div class="soc"><img src="https://placehold.co/20x20" alt=""> <div><small>600k+ Followers</small> Instagram</div></div>
+        <div class="soc"><img src="https://placehold.co/20x20" alt=""> <div><small>600k+ Likes</small> Facebook</div></div>
+        <div class="soc"><img src="https://placehold.co/20x20" alt=""> <div><small>160k+ Followers</small> Twitter</div></div>
+      </div> -->
+  
+      <!-- Featured in logos -->
+      <!-- <section class="featured">
+        <h4 class="caps">FEATURED IN</h4>
+        <div class="logos">
+          <img src="https://placehold.co/300x80?text=Men%27s+Health" alt="">
+          <img src="https://placehold.co/300x80?text=Forbes" alt="">
+          <img src="https://placehold.co/300x80?text=Business+Insider" alt="">
+          <img src="https://placehold.co/300x80?text=Muscle+%26+Fitness" alt="">
+          <img src="https://placehold.co/300x80?text=Men%27s+Journal" alt="">
+        </div>
+      </section> -->
+
+       
+  
+      <!-- Pull quote & intro -->
+      <p class="pull">“They’re trying to shut us down because this formula is <em>crushing</em> their multi-billion-dollar erectile pill empire overnight…”</p>
+      <p>These were the shocking words Dr. Aidan Shah told a packed symposium when he revealed what’s now being called:</p>
+  
+      <!-- Big claim header -->
+      <h2>“THE NATURAL MIRACLE THAT’S BANKRUPTING BLUE PILL COMPANIES ACROSS AMERICA.”</h2>
+  
+      <figure>
+        <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/fab98725-379a-4af8-ab81-e46fce8a983b.avif" alt="Blue pills">
+      </figure>
+  
+      <!-- Body -->
+      <div class="body">
+        <h2>MEDICAL ESTABLISHMENT IN PANIC MODE</h2>
+        <p>For decades, men were told they needed expensive pills, invasive injections, or humiliating pumps to regain their performance.</p>
+        <p>But today, men across the U.S. are discovering a 100% natural caps that works in just <strong>30 minutes</strong>, without prescriptions, side effects, or embarrassment.</p>
+  
+        <h3>Meet David R.</h3>
+        <p>A 56-year-old retired fire captain who struggled for years. After trying the simple caps routine, he reported renewed confidence and energy. His wife noticed first.</p>
+  
+        <figure>
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/cc09882e-cafb-42ef-ba4c-59aa28ffdb21.avif" alt="Before after">
+          <figcaption>Before/After (placeholder) — replace with your asset.</figcaption>
+        </figure>
+  
+        <!-- ====== COPY ADICIONADA A PARTIR DAQUI ====== -->
+  
+        <p class="pull">“I WENT FROM ‘EMBARRASSED’ TO ‘UNSTOPPABLE’ IN THE BEDROOM — IN ONE WEEK.”</p>
+  
+        <h2>THE $47 MILLION RESEARCH BREAKTHROUGH THEY TRIED TO SUPPRESS</h2>
+        <p>It took:</p>
+        <ul>
+          <li>✅ 18 months of clinical trials</li>
+          <li>✅ 3 Himalayan extraction experts</li>
+          <li>✅ 6 potent aphrodisiac herbs</li>
+          <li>✅ And over <strong>$47 million</strong> in R&amp;D…</li>
+        </ul>
+        <p>But the result was historic.</p>
+  
+
+  
+        <p>A fast-acting men’s health formula using <strong>pure Himalayan Shilajit, pomegranate seed oil, manuka honey, monk fruit,</strong> and <strong>vanilla extract</strong> — designed to:</p>
+        <ul>
+          <li>Skyrocket testosterone</li>
+          <li>Enhance blood flow</li>
+          <li>Restore morning wood</li>
+          <li>Increase size, stamina &amp; staying power</li>
+          <li>Boost energy, confidence &amp; clarity</li>
+        </ul>
+  
+        <figure>
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/ARTEED-01.png" alt="Ingredients collage">
+        </figure>
+  
+        <p class="pull">“Men Who Get Morning Wood Are Less Likely To Die From Strokes, Study Suggests”</p>
+  
+        <h3>Jake’s story will leave you speechless…</h3>
+        <p>"I never thought I’d be the kind of man sharing a transformation story like this. But what happened to me was too insane and honestly, too embarrassing to keep to myself."</p>
+        <p>Six months ago, I hit what I can only describe as the lowest moment of my adult life at my own anniversary dinner.</p>
+        <p>My wife had planned this big night. Beautiful restaurant. Candlelight. Even booked a hotel after. But halfway through dessert, she reached across the table, touched my hand, and said:</p>
+        <p><em>“Do you still want me?”</em></p>
+        <p>That question gutted me.</p>
+        <p>She wasn’t being dramatic. She was hurt. Disconnected. I hadn’t touched her in weeks. And not because I didn’t want to but because I physically couldn’t. My drive was gone. My energy? Shot. And when things did happen… let’s just say, they didn’t last long.</p>
+        <p>I blamed age. I blamed stress. I blamed work. But deep down I was terrified I was broken. That night I stared at myself in the mirror… and I barely recognized the man looking back.</p>
+        <p>The lines on my face looked deeper. My posture slouched. And the spark I used to have? Gone.</p>
+        <p>I looked a decade older than my 43 years and I felt twice that.</p>
+  
+        <figure>
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/e481dff2-7c25-4b20-b4a1-9a2c567a5c4e.jpeg" alt="Anniversary dinner">
+        </figure>
+  
+        <h3>“AT FIRST I THOUGHT IT WAS A JOKE… UNTIL I WOKE UP FEELING 25 AGAIN”</h3>
+        <p>My old college buddy who now works in men’s health called me out of nowhere and said, “Dude, I found something you NEED to try. It’s not a pill. It’s a caps. And it works in less than 2–3 weeks.”</p>
+        <p>I laughed. A caps? Seriously?</p>
+        <p>But then he said something that got my attention:</p>
+        <p><em>“It’s all-natural, but it hits like a freight train. Testosterone, libido, energy — everything comes back. I gained an inch in three weeks. No side effects. Just trust me.”</em></p>
+        <p>It was called <strong>Rambo Max Caps</strong> and honestly, I had nothing to lose.</p>
+        <p>I took one caps before bed. Tasted like fruit punch.</p>
+        <p><strong>The next morning?</strong> I woke up with something I hadn’t seen in months.</p>
+  
+        <figure>
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Google_AI_Studio_2025-09-29T01_28_50.591Z.png" alt="Product hero">
+        </figure>
+  
+        <h2>THE TRANSFORMATION WAS IMMEDIATE AND SHOCKING</h2>
+        <p>I had morning wood — the kind that hurts. My energy was through the roof. I hit the gym, crushed my lift, and felt like I could run through a wall.</p>
+        <p>By the end of the week, I noticed I wasn’t crashing in the afternoons. My brain fog was gone. I was joking around with my wife again. And she definitely noticed.</p>
+        <p>By week two, the bedroom was alive again. No pressure. No performance issues. Just confidence.</p>
+        <p>My wife said something I’ll never forget:</p>
+        <p><em>“You feel bigger. Stronger. Like the man I first met… but better.”</em></p>
+        <p>And honestly? She wasn’t wrong.</p>
+  
+        <figure>
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Google_AI_Studio_2025-09-29T01_31_04.989Z.png" alt="Gym lift">
+        </figure>
+  
+        <h3>“BY DAY 14, I LOOKED DIFFERENT. I FELT UNSTOPPABLE.”</h3>
+        <ul>
+          <li>✅ My face looked tighter, less puffy</li>
+          <li>✅ My workouts felt more powerful</li>
+          <li>✅ My libido stayed ON day and night</li>
+          <li>✅ And yeah… I gained an inch and a half down there</li>
+          <li>✅ My testosterone levels? Bloodwork showed a <strong>26% jump</strong></li>
+        </ul>
+        <p>I went to visit my brother who hadn’t seen me in a month and the moment I walked in he said:</p>
+        <p><em>“Yo… are you on TRT or something?”</em></p>
+        <p>When I told him it was just Rambo Max Caps, he pulled out his phone and ordered two bottles on the spot.</p>
+  
+        <figure>
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Google_AI_Studio_2025-09-29T01_37_45.243Z.png" alt="Before after physique">
+     
+        </figure>
+        <h3>“CLINICALLY PROVEN RESULTS”</h3>
+<ul>
+  <li>✅ 93% noticed a <strong>10% Increase in Testosterone Levels</strong> in under 4 weeks</li>
+  <li>✅ 90% experienced a <strong>Significant Boost in Libido</strong></li>
+  <li>✅ 98% reported <strong>Increased Energy and Mental Clarity</strong></li>
+  <li>✅ Results based on <strong>30,000 orders</strong></li>
+</ul>
+<p>
+  In a clinical trial, male participants aged 45 to 55 were split into two groups: 
+  one received a 250 mg dose of purified Shilajit twice daily, while the other received a placebo. 
+  After 30 days, those taking purified Shilajit exhibited significantly increased testosterone levels compared to the placebo group.
+</p>
+
+  
+        <h3>“THIS ISN’T JUST A SUPPLEMENT – IT GAVE ME BACK MY MARRIAGE, MY DRIVE… MY MANHOOD.”</h3>
+        <p>Since then, I haven’t looked back.</p>
+        <p>I take one caps every night. I sleep better. I perform better. I feel like a man again — not some tired, washed-up version of myself.</p>
+        <p>My wife and I are closer than we’ve ever been. And strangers at the gym keep asking what I’m taking. (I tell them and then watch their faces a week later when they come back grinning.)</p>
+        <p><strong>Rambo Max Caps</strong> didn’t just boost my performance… They gave me my confidence, my power, and my identity back.</p>
+        <p>For that I’ll be forever grateful.</p>
+  
+        <figure>
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/RAMBOMAX-BENEFITS.jpg" alt="Happy couple">
+        </figure>
+  
+        <h2>1. BOOSTS NATURAL TESTOSTERONE LEVELS — IN DAYS, NOT MONTHS</h2>
+        <p>Testosterone is at the core of male vitality — yet most men lose over 1% per year after 30. <strong>Rambo Max Caps</strong> deliver a rare Himalayan compound clinically shown to support natural T-production, helping restore drive, energy, and confidence.</p>
+        <p>Most users feel the difference within 72 hours. In clinical research, purified shilajit boosted testosterone by up to <strong>23.5%</strong> in just 90 days.†</p>
+  
+        <!-- <figure>
+          <img src="https://placehold.co/1200x640?text=Lab+Report+%2F+T-Levels+%28replace%29" alt="Lab report">
+          <figcaption>Example lab/graph (placeholder).</figcaption>
+        </figure> -->
+  
+        <h2>2. IMPROVES BLOOD FLOW WHERE IT MATTERS MOST</h2>
+        <p>Forget pumps and pills. Xara’s formula includes ingredients that support healthy circulation, helping you achieve and maintain stronger, firmer performance — naturally.</p>
+        <p>Our customers report enhanced stamina, quicker recovery, and hardness they haven't felt in years. The results are real — and for many, noticeable within the first week.</p>
+  
+        <!-- <figure>
+          <img src="https://placehold.co/1200x640?text=Circulation+Diagram+%28replace%29" alt="Circulation diagram">
+          <figcaption>Circulation support (placeholder).</figcaption>
+        </figure> -->
+  
+        <h2>3. REIGNITES LIBIDO & ENERGY WITHOUT STIMULANTS</h2>
+        <p>Low libido is often mistaken for age or stress — but it’s actually a symptom of hormonal depletion. Xara’s blend works with your body to wake up your natural sex drive without synthetic stimulants or side effects.</p>
+        <p>You’ll feel it not just in the bedroom, but in the gym, your focus, and your overall mood. No crashes. No jitters. Just real vitality.</p>
+  
+        <!-- <figure>
+          <img src="https://placehold.co/1200x640?text=Focus+%2B+Energy+%28replace%29" alt="Energy focus">
+          <figcaption>Steady energy (placeholder).</figcaption>
+        </figure> -->
+  
+        <h2>4. SUPPORTS SIZE, STRENGTH & DAILY PERFORMANCE</h2>
+        <p>Customers consistently report not just better performance but better size, shape, and stamina. That’s because Xara doesn’t mask symptoms — it helps optimize the core systems tied to male power: Testosterone, circulation, nitric oxide, and nutrient absorption.</p>
+        <p>The result? More endurance, more presence, and yes — more confidence when the clothes come off.</p>
+  
+        <!-- <figure>
+          <img src="https://placehold.co/1200x640?text=Strength+Training+%28replace%29" alt="Strength training">
+          <figcaption>Strength & stamina (placeholder).</figcaption>
+        </figure> -->
+  
+        <h2>WHY “MODERN” SOLUTIONS ARE FAILING MEN</h2>
+        <p><em>“We’ve created a billion-dollar industry around fixing men’s performance — but almost none of it addresses the root cause.”</em><br>– Dr. Jacob M., Clinical Researcher &amp; Men’s Health Advocate</p>
+        <p>Most over-the-counter solutions rely on temporary tricks — vasodilators, caffeine, or hormones that can backfire. <strong>Rambo Max</strong> works differently — by helping your body restore what it used to do naturally. No prescription. No weird side effects. Just real support.</p>
+  
+        <p>Picture waking up with:</p>
+        <ul>
+          <li>🔥 Morning energy that doesn’t need 2 cups of coffee</li>
+          <li>💪 Motivation to hit the gym or power through your workday</li>
+          <li>🍆 Size and stamina that leave your partner speechless</li>
+          <li>😏 A sex drive that feels better than it did in your 20s</li>
+        </ul>
+        <p>That’s what Rambo Max users report — and that’s why this formula is catching fire.</p>
+  
+        <figure>
+          <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/ChatGPT-Image-29-de-set.-de-2025-03_53_19.png" alt="Morning routine">
+        </figure>
+  
+        <h2>⚠️ LIMITED STOCK WARNING</h2>
+        <p>Due to viral demand and social media exposure, Rambo Max Caps are frequently out of stock. To protect supply for real users, the manufacturer has authorized one-time access through this page only.</p>
+        <p>👉 Tap below to claim your <strong>EXCLUSIVE 70% OFF + BUY 1 GET 1 FREE</strong> offer — while supplies last.</p>
+  
+        <p><a class="btn" href="https://vsl.infotrendnews.online/rambo-max-dtc/">CHECK AVAILABILITY</a></p>
+  
+        <div class="divider"></div>
+  
+        <h2>🔴 LIMITED TIME READER-ONLY SPECIAL</h2>
+        <p>Ordering now makes you eligible for <strong>50% OFF + buy 1 get 1 free</strong> Rambo Max Caps. Only available here. Limited to the first 200 customers only.</p>
+  
+        <a href="https://vsl.infotrendnews.online/rambo-max-dtc/" target="_blank" rel="noopener noreferrer">
+            <figure>
+              <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/rambomax-checkavailability.jpg" 
+                   alt="Offer badge">
+            </figure>
+          </a>
+          
+  
+        <h3>Jason’s Rating: ★★★★☆ 4.75 Stars</h3>
+        <p><em>Don’t come for me—but I took off half a star, and here’s why… Rambo Max worked almost too well.</em></p>
+        <p>Let’s just say I wasn’t quite ready for the boost in size, stamina, and morning “energy.” My girl noticed. The guys at the gym noticed. Even my sleep improved. If this is what natural testosterone support feels like, I’m hooked.</p>
+        <p>No wonder Xara has thousands of rave reviews from real guys. Just scroll the comments — they speak for themselves.</p>
+        <p><strong>⚠ Rambo Max Caps are now 50% OFF — and going fast.</strong></p>
+        <p>Already loving the idea of better drive and performance? Then why wait? Grab yours before someone else claims your stash.</p>
+  
+        <p><a class="btn" href="https://vsl.infotrendnews.online/rambo-max-dtc/">CHECK AVAILABILITY NOW</a></p>
+  
+        <!-- ====== FIM DA COPY ADICIONADA ====== -->
+      </div>
+  
+      <div class="divider"></div>
+  
+    
+      <div class="divider" style="margin:40px 0; border-top:1px solid #ddd;"></div>
+
+      <footer style="font-family:Arial, sans-serif; font-size:0.85rem; color:#555; line-height:1.5; max-width:900px; margin:0 auto; text-align:center;">
+      
+        <p style="margin-bottom:10px;">
+          © <span id="year"></span> Men's Health Magazine. All rights reserved.  
+          • <a href="#" style="color:#555; text-decoration:underline;">Privacy Policy</a>  
+          • <a href="#" style="color:#555; text-decoration:underline;">Terms & Conditions</a>  
+          • <a href="#" style="color:#555; text-decoration:underline;">Contact Us</a>
+        </p>
+      
+        <p style="font-size:0.75rem; color:#777; margin-top:20px; text-align:justify;">
+          <strong>Disclaimer:</strong> The information presented on this website is for informational and educational purposes only. 
+          This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. 
+          Always consult with your physician or qualified healthcare professional before starting any supplement, diet, or exercise program.  
+        </p>
+      
+        <p style="font-size:0.75rem; color:#777; text-align:justify;">
+          Representations regarding the efficacy and safety of this product have not been evaluated by the Food and Drug Administration.  
+          The testimonials and case studies found on this website are not intended to represent or guarantee that anyone will achieve the same or similar results.  
+        </p>
+      
+        <p style="font-size:0.75rem; color:#777; margin-top:15px;">
+          By using this site, you agree to follow the <a href="#" style="color:#777; text-decoration:underline;">Terms of Service</a> and all applicable laws and regulations.  
+        </p>
+      </footer>
+      
+      <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+      </script>
+      
+
+    </article>
+  
+    <!-- Back to top -->
+    <button class="to-top hidden" aria-label="Back to top">↑</button>
+  
+    <script>
+      // year
+      document.querySelector('#mag-article #year').textContent = new Date().getFullYear();
+      // back to top visibility
+      const btn = document.querySelector('#mag-article .to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) btn.classList.remove('hidden'); else btn.classList.add('hidden');
+      });
+      btn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+      // smooth scroll internal anchors
+      document.querySelectorAll('#mag-article a[href^="#"]').forEach(a=>{
+        a.addEventListener('click',e=>{
+          const id=a.getAttribute('href'); if(id.length<2) return;
+          const el=document.querySelector(id); if(!el) return;
+          e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'});
+        })
+      });
+    </script>
+  </div>
+  <!-- ===== End ===== -->
+  
