@@ -86,6 +86,85 @@
   
   <!-- 2) Header -->
   <header class="header">
+    <script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  data-utmify-ignore-iframe
+  data-utmify-is-cartpanda
+  async
+  defer
+></script>
+
+<script>
+  window.pixelId = "68cfcd76292ef0649e5f5ee9";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+
+
+
+<script>
+
+
+// === 1. Captura e armazena os parâmetros UTM + clids ===
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const utmParams = {};
+  for (const [key, value] of params.entries()) {
+    if (
+      key.startsWith("utm_") ||
+      key === "gclid" ||
+      key === "fbclid" ||
+      key === "ttclid"
+    ) {
+      utmParams[key] = value;
+    }
+  }
+  if (Object.keys(utmParams).length > 0) {
+    localStorage.setItem("utm_params", JSON.stringify(utmParams));
+  }
+})();
+
+// === 2. Ao carregar a página, injeta os parâmetros diretamente nos hrefs ===
+document.addEventListener("DOMContentLoaded", function () {
+  const utmString = localStorage.getItem("utm_params");
+  if (!utmString) return;
+
+  const utms = JSON.parse(utmString);
+  const links = document.querySelectorAll('a[href]');
+
+  links.forEach(link => {
+    try {
+      const url = new URL(link.href);
+
+      for (const key in utms) {
+        url.searchParams.set(key, utms[key]);
+      }
+
+      link.href = url.toString(); // Modifica o href direto
+    } catch (err) {
+      console.warn("Erro ao processar UTM no link:", link.href);
+    }
+  });
+});
+</script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDJJD9S709"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LDJJD9S709');
+</script>
+
     <div class="header-inner">
       <div class="brand">
         <strong>RAMBO&nbsp;MAX</strong><span class="brand-dot" aria-hidden="true"></span>
