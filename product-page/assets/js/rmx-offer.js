@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1) Dados dos kits
     const RMX_KITS = {
       one:  { ribbon:"", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/RAMBOMAX-1BTS-DTC.jpg",
-              title:"Basic", sub:"1 Bottle · 30-Day Supply", was:199, total:69, per:69, save:130, days:30,
+              title:"Basic", sub:"1 Bottle · 30-Day Supply", was:199, total:79, per:79, save:130, days:30,
               note:"Free US Shipping on 3+ bottles", href:"https://pay.gvitalabs.com/checkout/178934197:1", sku:"RMX-1", gifts:[] },
       three:{ ribbon:"MOST POPULAR", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/RAMBOMAX-3BTS-DTC.jpg",
               title:"Most Popular", sub:"3 Bottles · 90-Day Supply", was:597, total:177, per:59, save:420, days:90,
