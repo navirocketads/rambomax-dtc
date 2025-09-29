@@ -162,3 +162,59 @@
   background:linear-gradient(90deg, transparent, rgba(228,90,31,.55), transparent);
   margin:.7rem 0;
 }
+
+
+/* ====== SPACING & TYPE (geral) ====== */
+.sci-card { padding: 18px 16px; border-radius: 16px; }
+.sci-card p { margin: .35rem 0 .7rem; line-height: 1.55; }
+.sci-h3 { margin: 0 0 .6rem; }
+.sci-note { border-radius: 14px; }
+
+/* Melhor espaçamento entre elementos dentro do card */
+.sci-callouts { margin: .5rem 0 1rem; padding-left: 1.1rem; }
+.sci-callouts li { margin: .4rem 0; }
+.sci-steps { margin: .5rem 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.sci-steps .num {
+  display:inline-grid; place-content:center; width:28px; height:28px;
+  font-weight:900; border-radius:9px; color:#fff;
+  background: linear-gradient(180deg,#F1733A,var(--sci-accent,#E45A1F));
+  margin-right:10px;
+}
+
+/* Analogia (ícone + texto) */
+.sci-analogy { display:grid; grid-template-columns:32px 1fr; gap:12px; align-items:start; margin:.25rem 0 .6rem; }
+.sci-analogy .sci-ico{
+  width:32px;height:32px;display:grid;place-content:center;border-radius:10px;color:#fff;font-weight:900;
+  background:linear-gradient(180deg,#F1733A,var(--sci-accent,#E45A1F));
+  box-shadow:0 6px 18px rgba(228,90,31,.25);
+}
+
+/* ====== MOBILE FIRST FIXES ====== */
+@media (max-width: 720px){
+  .science { padding: 28px 12px; }
+  .science-wrap { gap: 12px; }
+  .sci-grid { grid-template-columns: 1fr; gap: 12px; }              /* 1 coluna real */
+  .sci-card { padding: 14px 12px; border-radius: 14px; }
+  .sci-card + .sci-card { margin-top: 6px; }                       /* respiro entre cards */
+
+  .sci-h3 { font-size: 18px; margin-bottom: 8px; }
+  .sci-analogy { grid-template-columns: 26px 1fr; gap: 10px; margin: 6px 0 8px; }
+  .sci-analogy .sci-ico { width:26px; height:26px; font-size:14px; }
+
+  .sci-callouts { margin: 6px 0 10px; padding-left: 16px; }
+  .sci-callouts li { margin: 6px 0; line-height: 1.45; }
+
+  .sci-steps { gap: 8px; }
+  .sci-steps .num { width: 24px; height: 24px; font-size: 13px; margin-right: 8px; }
+
+  .sci-note { margin-top: 10px; padding: 10px 12px; font-size: 13px; }
+  .sci-bottomline { margin-top: 10px; font-size: 14px; line-height: 1.45; }
+
+  /* garante que nada estoure lateral */
+  .science, .science * { box-sizing: border-box; }
+  .sci-card, .sci-note, .sci-bottomline { max-width: 100%; overflow-wrap: anywhere; }
+}
+
+/* ====== NO-OVERFLOW (desktop e mobile) ====== */
+.science { overflow: hidden; }
+.sci-card img, .sci-card svg { max-width: 100%; height: auto; display: block; }
