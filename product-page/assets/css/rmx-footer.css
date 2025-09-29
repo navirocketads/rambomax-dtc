@@ -1,0 +1,71 @@
+/* ===== Footer ===== */
+.rmx-footer {
+    background: linear-gradient(180deg,#0B0B0C,#0A0A0B);
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding: 2.5rem 1rem;
+    color: #D9DBE2;
+    font-family: Inter, system-ui, sans-serif;
+  }
+  
+  .rmx-footer-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+  }
+  
+  .rmx-footer-brand strong {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #fff;
+  }
+  .rmx-footer-brand p {
+    margin: .4rem 0 0;
+    font-size: .95rem;
+    color: #9DA0A6;
+  }
+  
+  .rmx-footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+  .rmx-footer-nav a {
+    color: #CFCFD6;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .rmx-footer-nav a:hover {
+    color: #fff;
+  }
+  
+  .rmx-footer-contact p {
+    margin: .3rem 0;
+  }
+  .rmx-footer-contact a {
+    color: var(--accent,#E45A1F);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .rmx-footer-contact a:hover {
+    text-decoration: underline;
+  }
+  
+  .rmx-footer-legal {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 1rem;
+    font-size: .8rem;
+    color: #9DA0A6;
+  }
+  .rmx-footer-legal p {
+    margin: .4rem 0;
+  }
+  .rmx-footer-legal a {
+    color: #CFCFD6;
+    text-decoration: none;
+    margin: 0 .3rem;
+  }
+  .rmx-footer-legal a:hover {
+    color: #fff;
+  }
+  

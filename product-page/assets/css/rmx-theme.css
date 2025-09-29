@@ -1,0 +1,21 @@
+:root{
+  --bg:#0B0B0C; --panel:#111214; --panel-2:#16181B; --stroke:rgba(255,255,255,.08);
+  --muted:#9DA0A6; --text:#F2F2F3; --accent:#E45A1F; --accent-700:#C24A1A; --accent-900:#7A2E0F;
+  --gold:#F4B25E; --radius:18px; --shadow:0 14px 40px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+.announce{background:linear-gradient(0deg,var(--accent-900),var(--accent));color:#fff;text-align:center;padding:.65rem 1rem;font-weight:800}
+.header{position:sticky;top:0;z-index:50;background:rgba(11,11,12,.72);backdrop-filter:saturate(120%) blur(4px);border-bottom:1px solid rgba(255,255,255,.06)}
+.header-inner{max-width:1200px;margin:0 auto;padding:.85rem 1rem;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:900;letter-spacing:.04em}.brand-dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.spacer{flex:1}
+.nav{display:flex;align-items:center;gap:1.2rem}.nav a{color:#D8D8DB;font-weight:600;text-decoration:none}.nav a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--accent);color:#fff;padding:.7rem 1rem;border-radius:999px;font-weight:900;box-shadow:0 6px 18px rgba(228,90,31,.35)}
+.btn:hover{background:var(--accent-700)}
+.cart{position:relative;margin-left:.25rem;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;background:#1E1E22;border:1px solid rgba(255,255,255,.06)}
+.cart-badge{position:absolute;top:-6px;right:-6px;background:var(--accent);color:#fff;font-size:.7rem;padding:.1rem .4rem;border-radius:999px;border:2px solid var(--bg);font-weight:900}
+.nav-toggle{display:none;width:42px;height:42px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:#1A1A1E;color:#fff}
+.bars{display:block;width:18px;height:2px;background:#fff;position:relative}.bars::before,.bars::after{content:"";position:absolute;left:0;width:18px;height:2px;background:#fff}.bars::before{top:-6px}.bars::after{top:6px}
+@media (max-width:960px){.nav{display:none;position:absolute;left:0;right:0;top:100%;background:#121214;border-bottom:1px solid rgba(255,255,255,.06);padding:1rem;flex-direction:column}.nav.is-open{display:flex}.nav-toggle{display:inline-flex;align-items:center;justify-content:center}}
+@media (min-width:961px){.nav{display:flex !important}}

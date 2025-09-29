@@ -1,0 +1,38 @@
+.rmx-guarantee-section{
+    background:linear-gradient(180deg,#0C0C0D 0%, #0A0A0B 100%);
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:48px 16px;
+  }
+  .rmx-guarantee-wrap{
+    max-width:1000px; margin:0 auto;
+    display:grid; gap:20px; justify-items:center;
+  }
+
+  /* Moldura para segurar a imagem e impedir overflow */
+  .rmx-guarantee-media{
+    width:100%;
+    background:linear-gradient(180deg,#121316,#0B0B0C);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px; padding:10px;
+    box-shadow:0 20px 40px rgba(0,0,0,.55);
+    overflow:hidden;   /* <- evita “vazar” em casos extremos */
+  }
+  .rmx-guarantee-media img{
+    display:block;
+    width:100%;        /* <- ocupa o container, mas sem passar do max-width global */
+    height:auto;
+    max-width:100%;
+    border-radius:12px;
+    object-fit:contain; /* <- não estica a imagem */
+  }
+
+  .rmx-guarantee-text{
+    text-align:center; max-width:760px;
+    font-size:1.08rem; line-height:1.6; color:#D9DBE2;
+  }
+  .rmx-guarantee-text strong{ color:#fff; font-weight:900 }
+
+  @media (min-width:900px){
+    .rmx-guarantee-wrap{ gap:24px }
+    .rmx-guarantee-text{ font-size:1.12rem }
+  }

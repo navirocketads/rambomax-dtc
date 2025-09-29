@@ -1,0 +1,16 @@
+.rm-testimonials{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#0f172a;padding:16px 12px;max-width:980px;margin:0 auto}
+.rm-testimonials .head{text-align:center;margin:0 0 14px}
+.rm-testimonials .kicker{font-weight:900;color:#ef4444;font-size:clamp(16px,3vw,18px);letter-spacing:.3px;margin:4px 0 6px}
+.rm-grid{display:grid;gap:12px;grid-template-columns:1fr}
+@media (min-width:680px){.rm-grid{grid-template-columns:1fr 1fr}}
+@media (min-width:980px){.rm-grid{gap:16px}}
+.rm-card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;box-shadow:0 1px 0 rgba(15,23,42,.03);display:flex;flex-direction:column}
+.rm-card .media{width:100%;height:220px;background:#e2e8f0;position:relative;overflow:hidden}
+@media (min-width:680px){.rm-card .media{height:260px}}
+.rm-card .media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.rm-card .body{padding:12px 12px 14px}
+.rm-card .top{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.rm-card .name{font-weight:900;font-size:15px}
+.rm-card .age{color:#0f172a;background:#fff7ed;border:1px solid #ffedd5;border-radius:999px;padding:3px 8px;font-weight:800;font-size:12px}
+.rm-card .duration{margin-left:auto;color:#065f46;background:#ecfdf5;border:1px solid #d1fae5;border-radius:999px;padding:3px 8px;font-weight:800;font-size:12px}
+.rm-card blockquote{margin:8px 0 0;color:#0f172a;font-size:15px;line-height:1.5}
