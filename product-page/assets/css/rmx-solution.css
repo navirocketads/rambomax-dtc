@@ -1,0 +1,84 @@
+/* ===== Solution / Benefits ===== */
+:root{
+    --sol-bg:#0A0A0B;
+    --sol-ink:#F2F2F3;
+    --sol-muted:#D0D3DA;
+    --sol-accent:var(--accent, #E45A1F);
+    --sol-line:rgba(255,255,255,.10);
+  }
+  
+  .solution{ background:var(--sol-bg); color:var(--sol-ink); }
+  .solution-wrap{ max-width:1200px; margin:0 auto; padding:46px 16px; }
+  
+  .solution-head{ text-align:center; margin-bottom:22px; }
+  .solution-title{
+    margin:0 0 10px; font-weight:900; line-height:1.05;
+    font-size:clamp(28px,4.2vw,44px);
+  }
+  .solution-title .hi{ color:var(--sol-accent); }
+  .solution-lead{
+    max-width:880px; margin:0 auto; color:#E6E7EC;
+    line-height:1.55; font-size:clamp(15px,1.6vw,18px);
+  }
+  
+  /* grid */
+  .solution-grid{
+    display:grid; gap:28px;
+    grid-template-columns: 1.05fr 1fr;
+    align-items:center;
+    margin-top:18px;
+  }
+  @media (max-width:980px){ .solution-grid{ grid-template-columns:1fr; gap:18px; } }
+  
+  /* capsule image with subtle glow */
+  .solution-media{ display:grid; place-items:center; }
+  .capsule{
+    position:relative; width:100%; max-width:560px; margin:0;
+    aspect-ratio:1/1; display:grid; place-items:center;
+  }
+  .capsule::before{
+    content:""; position:absolute; inset:0;
+    background: radial-gradient(60% 60% at 50% 50%, rgba(228,90,31,.22), transparent 70%);
+    filter: blur(18px);
+  }
+  .capsule img{
+    width:min(75%,520px); height:auto; z-index:1;
+    display:block; object-fit:contain;
+  }
+  @media (max-width:780px){
+    .capsule{ max-width:420px; }
+    .capsule img{ width:min(72%,360px); }
+  }
+  
+  /* list */
+  .solution-list ul{ list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+  .solution-list li{
+    display:grid; grid-template-columns: 36px 1fr; gap:12px;
+    align-items:start; padding:12px 10px;
+    border-bottom:1px solid var(--sol-line);
+  }
+  .solution-list li:last-child{ border-bottom:none; }
+  
+  .solution-list .ico{
+    width:36px; height:36px; border-radius:999px;
+    display:inline-grid; place-items:center;
+    background:linear-gradient(180deg,#2C2D31,#1A1B1F);
+    border:1px solid rgba(255,255,255,.18);
+  }
+  .solution-list .ico svg{
+    width:18px; height:18px; fill:var(--sol-accent);
+  }
+  
+  .solution-list .t1{
+    font-weight:900; letter-spacing:.01em;
+    font-size:clamp(16px,2.1vw,22px);
+  }
+  .solution-list .t2{
+    color:var(--sol-muted); margin-top:3px;
+    font-size:clamp(13px,1.6vw,16px); line-height:1.45;
+  }
+  
+  /* no horizontal scroll ever */
+  .solution, .solution *{ box-sizing:border-box; }
+  .solution{ overflow:hidden; }
+  
