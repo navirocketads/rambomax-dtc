@@ -1,0 +1,74 @@
+/* ===== Authority Section ===== */
+.rmx-authority {
+    background: radial-gradient(circle at center, #111 0%, #0A0A0B 100%);
+    padding: 70px 20px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .rmx-authority-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  
+  .rmx-authority-sub {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 720px;
+    margin: 0 auto 50px;
+  }
+  
+  .rmx-authority-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .rmx-authority-card {
+    background: #141416;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+    text-align: center;
+  }
+  
+  .rmx-authority-img img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 18px;
+    border: 3px solid var(--accent, #E45A1F);
+  }
+  
+  .rmx-authority-name {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  
+  .rmx-authority-role {
+    font-size: 0.9rem;
+    color: #E45A1F;
+    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: .03em;
+  }
+  
+  .rmx-authority-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+  
+  /* Mobile */
+  @media (max-width: 960px) {
+    .rmx-authority-grid {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+  }
+  
