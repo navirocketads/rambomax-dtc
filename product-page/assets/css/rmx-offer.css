@@ -41,3 +41,14 @@
 .rmx-badges{display:flex;gap:.6rem;flex-wrap:wrap}
 .rmx-badge{background:#141518;border:1px solid var(--stroke);padding:.5rem .7rem;border-radius:10px;color:#CFCFD6;font-weight:800}
 .rmx-guarantee{border:1px dashed rgba(255,255,255,.16);border-radius:12px;padding:.85rem 1rem;background:rgba(20,22,25,.6);color:#D9DBE2}
+
+/* Disclaimer abaixo dos preços */
+.rmx-disclaimer {
+    margin-top: 8px;
+    font-size: 0.92rem;
+    font-weight: 900;
+    color: #FF3B30; /* vermelho bem visível */
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  
