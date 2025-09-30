@@ -19,3 +19,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui
 .bars{display:block;width:18px;height:2px;background:#fff;position:relative}.bars::before,.bars::after{content:"";position:absolute;left:0;width:18px;height:2px;background:#fff}.bars::before{top:-6px}.bars::after{top:6px}
 @media (max-width:960px){.nav{display:none;position:absolute;left:0;right:0;top:100%;background:#121214;border-bottom:1px solid rgba(255,255,255,.06);padding:1rem;flex-direction:column}.nav.is-open{display:flex}.nav-toggle{display:inline-flex;align-items:center;justify-content:center}}
 @media (min-width:961px){.nav{display:flex !important}}
+
+/* evita que o header fixo cubra o topo da seção ao usar âncoras */
+#offer, #science, #reviews, #what-to-expect { scroll-margin-top: 84px; }
+@media (max-width: 960px){ #offer, #science, #reviews, #what-to-expect { scroll-margin-top: 72px; } }
