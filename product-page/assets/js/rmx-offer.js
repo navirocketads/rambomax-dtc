@@ -4,17 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1) Dados dos kits
     const RMX_KITS = {
       one:  { ribbon:"", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/RAMBOMAX-1BTS-DTC.jpg",
-              title:"Basic", sub:"1 Bottle · 30-Day Supply", was:199, total:49, per:49, save:130, days:30,
+              title:"Basic", sub:"1 Bottle · 30-Day Supply", was:199, total:39, per:39, save:130, days:30,
               note:"Free US Shipping on 3+ bottles", href:"https://pay.gvitalabs.com/checkout/198194802:1", sku:"RMX-1", gifts:[] },
       three:{ ribbon:"MOST POPULAR", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/RAMBOMAX-3BTS-DTC.jpg",
-              title:"Most Popular", sub:"3 Bottles · 90-Day Supply", was:597, total:105, per:35, save:420, days:90,
+              title:"Most Popular", sub:"3 Bottles · 90-Day Supply", was:597, total:90, per:30, save:420, days:90,
               note:"Includes FREE US Shipping + 2 Gifts", href:"https://pay.gvitalabs.com/checkout/198194803:1", sku:"RMX-3",
               gifts:[
                 {name:"Lesbian Trick - Sexual Performance Video Lessons ($140) — FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Screenshot-2025-09-29-at-08.25.42.jpg"},
                 {name:"1K Testosterone Guide ($49) — FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/testoGuide.jpg"}
               ]},
       six:  { ribbon:"BEST VALUE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/RAMBOMAX-6BTS-DTC.jpg",
-              title:"Best Value", sub:"6 Bottles · 180-Day Supply", was:1188, total:180, per:30, save:894, days:180,
+              title:"Best Value", sub:"6 Bottles · 180-Day Supply", was:1188, total:150, per:25, save:894, days:180,
               note:"FREE US Shipping + 3 Gifts + Biggest Savings", href:"https://pay.gvitalabs.com/checkout/198194804:1", sku:"RMX-6",
               gifts:[
                 {name:"Rambo Max App - Daily Progress Track ($97/mo) — FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/ramboMaxAPP.jpg"},
