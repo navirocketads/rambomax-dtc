@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NEWS — Informação</title>
+<style>
+  /* ===== Base / Reset ===== */
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:#111; background:#fff; line-height:1.6}
+  img{max-width:100%; height:auto; display:block}
+  a{text-decoration:none; color:inherit}
+  .container{max-width:980px; margin:0 auto; padding:0 20px}
+
+  /* ===== Topbar (NEWS / INFORMAÇÃO) ===== */
+  .topbar{position:sticky; top:0; z-index:1000; background:#b10000; color:#fff}
+  .topbar-inner{display:flex; align-items:center; justify-content:center; height:72px; position:relative}
+  .topbar-title{font-weight:800; letter-spacing:.08em}
+  .topbar-sub{background:#a00000; text-align:center; padding:8px 0; font-weight:700; letter-spacing:.06em; border-top:1px solid rgba(255,255,255,.15)}
+
+  /* ===== Manchete ===== */
+  .headline-wrap{padding:36px 0 8px}
+  .headline{font-size:clamp(28px, 4.8vw, 56px); font-weight:900; letter-spacing:-.01em}
+  .lead{font-style:italic; color:#333; margin:18px 0 8px}
+  .byline{font-weight:800; margin-top:18px}
+  .meta{color:#666; font-size:14px; margin-top:2px}
+
+  /* ===== Social (opcional) ===== */
+  .social{display:flex; gap:10px; margin:18px 0 28px}
+  .social a{width:36px; height:36px; display:grid; place-items:center; border:1px solid #e5e5e5; border-radius:8px}
+  .ico{width:18px; height:18px}
+
+  /* ===== Conteúdo ===== */
+  .article{font-size:18px}
+  .article p{margin:18px 0}
+  .article h2{font-size:24px; margin:28px 0 10px; font-weight:900}
+  .muted{color:#555}
+  .center{display:flex; justify-content:center}
+  .caption{font-size:14px; color:#666; text-align:center; margin-top:8px}
+  .wide-media{margin:26px 0}
+  .hr{height:1px; background:#eee; margin:28px 0}
+
+  /* Destaques / Aviso */
+  .mark-yellow{background:#fff59d; padding:0 .22em}
+  .attention{border:2px solid #ffd54f; background:#fffde7; padding:16px; border-radius:12px; margin:24px 0}
+  .attention h3{color:#c62828; margin:0 0 8px; font-size:18px}
+
+  /* Bullets vermelhos (se usar) */
+  .bullets{margin:12px 0 12px 0; padding-left:0; list-style:none}
+  .bullets li{display:flex; gap:10px; margin:10px 0}
+  .dot{width:8px; height:8px; border-radius:50%; background:#d32f2f; margin-top:10px; flex:0 0 8px}
+
+  /* CTA verde */
+  .cta-big{display:inline-block; background:#16a34a; color:#fff; padding:16px 20px; border-radius:12px; font-weight:900; font-size:18px; text-align:center}
+
+  /* Grade de oferta (opcional) */
+  .offer-grid{display:grid; grid-template-columns:1fr; gap:16px}
+  @media (min-width:900px){ .offer-grid{grid-template-columns:repeat(3,1fr)} }
+  .offer-card{border:1px solid #eaeaea; border-radius:14px; padding:16px}
+  .offer-card h4{margin:0 0 6px; font-size:18px}
+  .price{font-size:28px; font-weight:900}
+  .btn-green{display:inline-block; background:#16a34a; color:#fff; padding:14px 18px; border-radius:10px; font-weight:900; text-align:center; margin-top:10px}
+  .btn-green:hover{filter:brightness(1.05)}
+
+  /* FAQ acordeão */
+  .faq{margin:28px 0; border-top:1px solid #eee}
+  .faq-item{border-bottom:1px solid #eee}
+  .faq-q{display:flex; justify-content:space-between; align-items:center; cursor:pointer; padding:16px 6px}
+  .faq-q h5{margin:0; font-size:16px}
+  .faq-a{display:none; padding:0 6px 16px; color:#444}
+  .chev{transition:transform .2s ease}
+
+  /* Rodapé */
+  .footer{font-size:13px; color:#666; margin:26px 0}
+
+  /* Barra de progresso de leitura */
+  .progress{position:fixed; top:0; left:0; height:4px; width:100%; background:rgba(0,0,0,.06); z-index:1001}
+  .progress > div{height:100%; width:0; background:#2563eb; transition:width .1s linear}
+.quote {
+  border-left: 4px solid #2563eb;
+  background: #f9fafb;
+  padding: 14px 18px;
+  margin: 22px 0;
+  border-radius: 8px;
+  font-style: italic; color: #333;
+}.highlight {
+  font-weight: 900;          /* mais pesado que o normal */
+  color: #111;               /* preto intenso */
+  background: #fff59d;       /* amarelo claro estilo marca-texto */
+  padding: 2px 4px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.interview {
+  border-left: 4px solid #2563eb;
+  background: #f3f4f6;
+  padding: 16px 18px;
+  margin: 28px 0;
+  border-radius: 8px;
+}
+
+.interview p {
+  margin: 12px 0;
+  font-size: 17px;
+}
+
+.reporter {
+  font-weight: 900;
+  color: #b91c1c;  /* vermelho para o repórter */
+}
+
+.ryan {
+  font-weight: 900;
+  color: #2563eb;  /* azul para o Ryan */
+}
+
+.ryan-quote {
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 16px;
+  color: #111;
+}
+
+.mistake-section {
+  background: #fff7ed; /* leve tom alaranjado para diferenciar */
+  border: 1px solid #fdba74;
+  padding: 20px 22px;
+  margin: 28px 0;
+  border-radius: 10px;
+}
+
+.mistake-section h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #b91c1c;
+  margin-bottom: 14px;
+}
+
+.checklist {
+  margin: 16px 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.checklist li {
+  margin: 8px 0;
+  font-weight: 600;
+  color: #111;
+}
+
+
+.highlight-strong {
+  font-weight: 900;
+  color: #065f46;
+  background: #d1fae5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.routine-section {
+  background: #f0fdf4; /* verde bem suave */
+  border: 1px solid #86efac;
+  padding: 24px;
+  margin: 28px 0;
+  border-radius: 12px;
+}
+
+.routine-section h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #065f46;
+  margin-bottom: 18px;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.steps li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.step-icon {
+  background: #065f46;
+  color: #fff;
+  font-weight: 800;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+.step-content strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #064e3b;
+}
+
+.step-content p {
+  margin: 4px 0;
+}
+
+/* Opcional: reforço visual do título da entrevista e separadores internos */
+.article h2 { color:#0f172a; } /* se quiser um tom mais forte no h2 */
+.interview { position: relative; }
+.interview::before {
+  content: "Interview";
+  position: absolute; top:-12px; left:12px;
+  background:#2563eb; color:#fff; font-size:12px; font-weight:800;
+  padding:4px 8px; border-radius:6px;
+}
+.interview p strong { color:#111; }
+
+
+.rambo-discovery {
+  background: #fef2f2; /* leve tom vermelho-rosado */
+  border: 1px solid #fecaca;
+  padding: 24px;
+  border-radius: 10px;
+  margin: 32px 0;
+}
+
+.rambo-discovery h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #991b1b;
+  margin-bottom: 16px;
+}
+
+.incident-section {
+  background: #eff6ff; /* azul claro */
+  border: 1px solid #93c5fd;
+  padding: 24px;
+  border-radius: 10px;
+  margin: 32px 0;
+}
+
+.incident-section h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 18px;
+}
+
+.highlight-quote {
+  background: #dbeafe;
+  border-left: 4px solid #1d4ed8;
+  font-weight: 600;
+}
+
+.warning-box {
+  background: #fef9c3; /* amarelo claro */
+  border: 2px solid #facc15; /* amarelo forte */
+  padding: 24px;
+  border-radius: 10px;
+  margin: 32px 0;
+}
+
+.warning-box h2 {
+  color: #b91c1c; /* vermelho escuro */
+  font-weight: 900;
+  font-size: 22px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.warning-box p {
+  margin: 12px 0;
+}
+
+.warning-box .highlight-strong {
+  background: #fef08a;
+  border-left: 4px solid #ca8a04;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 800;
+  color: #92400e;
+}
+.benefits-box {
+  background: #ecfdf5; /* verde bem leve */
+  border: 1px solid #6ee7b7;
+  padding: 28px;
+  margin: 36px 0;
+  border-radius: 12px;
+}
+
+.benefits-box h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #065f46;
+  margin-bottom: 18px;
+}
+
+.checklist {
+  list-style: none;
+  padding-left: 0;
+  margin: 14px 0;
+}
+
+.checklist li {
+  margin: 6px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+.checklist.green li {
+  color: #065f46;
+}
+
+.cta-box {
+  background: #fef2f2;
+  border: 2px solid #ef4444;
+  padding: 14px 18px;
+  text-align: center;
+  margin-top: 22px;
+  border-radius: 8px;
+  font-weight: 800;
+  color: #991b1b;
+}
+.urgent-box {
+  background: #fef2f2; /* vermelho claro */
+  border: 2px solid #dc2626;
+  padding: 28px;
+  margin: 36px 0;
+  border-radius: 12px;
+}
+
+.urgent-box h2 {
+  font-size: 22px;
+  font-weight: 900;
+  color: #b91c1c;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.urgent-box p {
+  margin: 14px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.urgent-box .highlight-strong {
+  background: #fee2e2;
+  border-left: 4px solid #dc2626;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 800;
+  color: #991b1b;
+}
+
+.urgent-cta {
+  background: #dc2626;
+  border: 2px solid #7f1d1d;
+  color: #fff;
+  font-size: 18px;
+  margin-top: 24px;
+  border-radius: 8px;
+  padding: 16px 20px;
+  text-align: center;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.consequence-box {
+  background: #111827; /* preto azulado */
+  border: 2px solid #374151; /* cinza escuro */
+  padding: 28px;
+  margin: 36px 0;
+  border-radius: 12px;
+  color: #f3f4f6;
+}
+
+.consequence-box h2 {
+  font-size: 22px;
+  font-weight: 900;
+  color: #f87171; /* vermelho claro */
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.checklist.danger li {
+  color: #fca5a5;
+  font-weight: 600;
+}
+
+.dark-quote {
+  background: #1f2937;
+  border-left: 4px solid #dc2626;
+  padding: 12px 16px;
+  border-radius: 6px;
+  color: #f9fafb;
+  margin: 20px 0;
+}
+
+/* Hotfix: volta tudo para estilo de notícia (fundo branco, bordas leves) */
+.mistake-section, .routine-section, .rambo-discovery, .incident-section,
+.warning-box, .benefits-box, .urgent-box, .consequence-box {
+  background:#fff !important; border:1px solid #eee !important; padding:0 !important; margin:0 !important; border-radius:0 !important;
+}
+.highlight-strong, .highlight { background:transparent !important; border:none !important; padding:0 !important; color:inherit !important; font-weight:700 !important; }
+.cta-box, .urgent-cta { background:transparent !important; border:none !important; color:inherit !important; padding:0 !important; font-weight:inherit !important; }
+
+
+</style>
+</head>
+<body>
+
+<!-- Barra de progresso -->
+<div class="progress"><div id="progressBar"></div></div>
+
+<!-- Topo vermelho -->
+<div class="topbar">
+  <div class="topbar-inner container">
+    <div class="topbar-title">NEWS</div>
+  </div>
+  <div class="topbar-sub">DAILY TREND</div>
+</div>
+
+<main class="container">
+
+  <!-- Manchete / Lead -->
+  <section class="headline-wrap">
+    <h1 class="headline">
+      48-Year-Old Delivery Driver Causes Traffic Jam After Drivers Mistook His 4-Hour Erection for a Gun: “I Just Wanted to Deliver the Food,” He Says
+    </h1>
+    <p class="lead">"This 30-second-routine  got me stopped by the cops right in the middle of the avenue…
+        I was only released after proving it wasn’t a weapon — it was something even more shocking."</p>
+    <p class="byline">By Staff Reporter</p>
+    <p class="meta" id="pubDate">Updated today</p>
+  </section>
+
+  <!-- Hero -->
+  <figure class="wide-media">
+    <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/10/6311608_071020-kabc-11am-hollywood-garces-CC-vid.jpg">
+   
+  </figure>
+
+  <!-- Artigo -->
+  <article class="article">
+
+<p>When Ryan Miller, a 48-year-old delivery driver, showed up on Hollywood Boulevard, in Los Angeles with a rock-solid erection, chaos broke out. Motorists surrounded him, and some even called the police, convinced he was hiding a weapon under his clothes.</P>
+<blockquote class="quote">
+  <p>
+    But actually, it is fun seeing this happening with me… One week ago, I couldn’t even get hard, but now my erection can literally stop the traffic and make an officer say to me put my hands where he could see it, thinking i was carrying a gun in my pants. But it wasn’t always like this…
+</p>
+</blockquote>
+
+
+    <p>When Ryan Miller, a 48-year-old delivery driver, showed up on Hollywood Boulevard with a rock-solid erection, chaos broke out. Cars slammed their brakes, horns echoed, and terrified motorists called the police — convinced he was hiding a gun in his pants.
+        </p>
+
+        <p> But the truth was even more unbelievable.</p>
+
+<blockquote class="quote">
+    <p>
+      “Imagine the officer yelling ‘Hands where I can see them!’ — and me trying to explain it wasn’t a weapon, it was… well, me,” Ryan laughs now.
+      </p>
+  </blockquote>
+
+    <p>Every man knows how humiliating it feels to look at your partner in bed and admit: “I failed.”</p>
+
+    <p>And once it happens, it tends to repeat itself. The more often it does, the more anxiety builds up… until it becomes a vicious cycle.</p>
+
+<p class="highlight">
+But it wasn’t always like this.
+</p>
+
+<p>Every man knows the shame of looking into his partner’s eyes and admitting: “I failed.”</p>
+
+<p>And the cruel thing is… once it happens, it tends to happen again. The fear builds up, the anxiety gets worse, until you’re trapped in a vicious cycle where failure feels inevitable.</p>
+
+<p>Ryan had been stuck in that cycle for years — until he stumbled on a discovery that experts now call the hidden root cause of erectile dysfunction: “Poisoned Testosterone.”</p>
+
+<h2>What does that mean?</h2>
+
+<p class="highlight">Over time, chemicals from food, plastics, even the water you drink can pollute your testosterone. Instead of fueling your energy, muscle, and erections… it becomes weak, sluggish, and toxic.</p>
+
+<p><em>Think of it like gasoline mixed with sand</em> — the engine can’t fire, no matter how much you push the pedal.</p>
+
+<p><strong>And that’s why pills like Viagra or Tadalafil never fixed Ryan’s problem.</strong>  
+They force blood flow for a short time, but they don’t clean the poisoned testosterone.  
+<span class="highlight-strong">The result? Headaches, chest pain, and eventually total failure.</span></p>
+
+<hr class="divider">
+
+<p><strong>That’s when he found <span style="color:#b91c1c;">Rambo Max™</span></strong> — a newly FDA-approved natural formula that’s been blowing up in the U.S.</p>
+
+<p><strong>Unlike the pharmacy pills, Rambo Max™ targets the <u>real cause</u>.</strong></p>
+
+<p>Its blend of <strong>Himalayan Red Honey, Shilajit, Ashwagandha</strong>, and rare adaptogens  
+<span class="highlight">flushes the toxins out of your testosterone</span>, reviving it into clean, powerful testosterone again.</p>
+
+<blockquote class="quote">
+  <p><strong>Doctors report:</strong> it can trigger <u>harder, longer-lasting erections</u> up to <strong>7x more effective</strong> than Tadalafil…  
+  <em>but without the brutal side effects.</em></p>
+</blockquote>
+
+<h2>In Ryan’s own words:</h2>
+
+<blockquote class="quote">
+  <p>“Last week, I couldn’t even stay hard for two minutes. Today? My dick was so fucking hard it stopped traffic in Los Angeles. People thought I was carrying a weapon. And in a way… I was.”</p>
+</blockquote>
+
+section class="mistake-section">
+    <h2>The Real Mistake Men Make</h2>
+  
+    <p>Most men think the answer to their problems is simple: pop a blue pill, or dump money into some overpriced hormone therapy.</p>
+    
+    <p class="highlight">But here’s the harsh truth:</p>
+  
+    <ul class="checklist">
+      <li>❌ Pills like Viagra and Cialis don’t “fix” anything — they just force blood flow for a short window.</li>
+      <li>❌ Over time, they lose their punch, leaving you chasing higher doses for weaker results.</li>
+      <li>❌ And the side effects? Headaches, blurred vision, dizziness, nausea… even heart attacks.</li>
+    </ul>
+  
+    <p>And don’t lie to yourself — you’ve probably tried at least once, gambling your health, praying <em>“please let it work this time.”</em> Sometimes you get nothing but the side effects.</p>
+  
+    <p class="highlight-strong">👉 Strong, natural erections do not have to mean Viagra or Tadalafil.</p>
+  
+    <p>That’s exactly what Ryan discovered when he switched to <strong>Rambo Max™</strong>.</p>
+  
+    <p>For the first time in decades, he performed naturally — no pounding chest, no fear his heart might explode, no ticking clock waiting for the pill to kick in.</p>
+  
+    <p>And he’s not alone.</p>
+  
+    <blockquote class="quote">
+      <p>Recent U.S. research confirms: when testosterone is clean instead of poisoned, men can achieve rock-hard erections lasting up to 2 hours — safely, spontaneously, and without prescriptions.</p>
+    </blockquote>
+  </section>
+
+  
+<!-- === INÍCIO DO BLOCO "Ryan’s 3-Step Routine" === -->
+<section class="routine-section">
+    <h2>Ryan’s 3-Step Routine</h2>
+    <p>After ditching the dangerous pharmacy pills, Ryan built a new routine — simple, natural, and brutally effective:</p>
+  
+    <ol class="steps">
+      <li>
+        <div class="step-icon">1</div>
+        <div class="step-content">
+          <strong>Step 1 — Cut the crap.</strong>
+          <p>He threw away the blue pills: Viagra, Cialis, even the shady Paraguayan “Pramil.” They weren’t fixing the root cause — just frying his system and making him weaker.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">2</div>
+        <div class="step-content">
+          <strong>Step 2 — Reset the body.</strong>
+          <p>Better sleep, lower stress, clean diet. Not perfect, but enough to stop pouring fuel on the fire that was poisoning his testosterone.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-icon">3</div>
+        <div class="step-content">
+          <strong>Step 3 — The Rambo Max™ Ritual.</strong>
+          <p>Every morning, a small spoonful of the formula — packed with Himalayan Red Honey, Shilajit, Ashwagandha, and adaptogens that flush toxins and supercharge testosterone back to life.</p>
+          <p class="highlight-strong">It costs less than $0.80 a day… and delivers what pills never could: iron-hard erections, lasting for hours, on demand.</p>
+        </div>
+      </li>
+    </ol>
+  
+    <blockquote class="quote">
+      <p>And it worked so well… it nearly landed him in jail.</p>
+    </blockquote>
+  </section>
+  <!-- === FIM DO BLOCO === -->
+  
+
+  <!-- === INÍCIO: “I Was Treated Like a Criminal” (colar dentro de <article class="article">) === -->
+<h2>“I Was Treated Like a Criminal”</h2>
+
+<p>We sat down with Ryan after his bizarre story exploded across the news. He remembers that morning vividly:</p>
+
+<blockquote class="quote">
+  <p>“Minutes after taking Rambo Max™, I was so hard I thought my shorts would rip. By the time I got on my bike, I couldn’t hide it. The cops thought I was armed. But it was just my hard dick.”</p>
+</blockquote>
+
+<div class="interview">
+  <p><strong>Reporter:</strong> Ryan, you went viral after the traffic jam incident. What exactly happened?</p>
+
+  <p><strong>Ryan:</strong><br>
+  “Honestly, it didn’t start that day. It started years ago. I was in my early 40s when my dick just… stopped working the way it used to. At first I thought it was stress, or being tired. But then it became permanent. I failed in bed again and again.
+  It destroyed relationships. Even after I got married, my wife would throw it in my face during arguments. She’d say, ‘What kind of man can’t even satisfy his own wife?’ That crushed me. I felt less than a man.”</p>
+
+  <p><strong>Reporter:</strong> Did you try other treatments before?</p>
+
+  <p><strong>Ryan:</strong><br>
+  “Of course. Every guy does. The first stop is the blue pill. Viagra, Cialis… whatever would get me hard. But I relied on them so much my body started to fall apart.
+  My chest would pound like a hammer. I couldn’t see straight. I remember sitting on the edge of the bed, shaking, wondering if I was about to drop dead.
+  My doctor finally told me straight: ‘If you keep swallowing these pills, you won’t make it to 60.’
+  That hit me hard. I wasn’t just losing my erections — I was gambling with my life.”</p>
+
+  <p>Then came the breaking point.
+  “One night, during sex, I felt my arm go numb. Sharp pain exploded in my chest. I blacked out on the floor right next to the bed.
+  When I woke up, my wife was over me, crying, shaking me, begging me to wake up. That moment burned into my brain.
+  I swore right then: never again. I would never risk dying just to get hard.”</p>
+</div>
+<!-- === FIM: bloco de entrevista === -->
+
+<!-- === INÍCIO BLOCO: Then He Found Rambo Max™ === -->
+<section class="rambo-discovery">
+    <h2>Then He Found Rambo Max™</h2>
+  
+    <blockquote class="quote">
+      <p>“After that scare, I tried everything — supplements, teas, herbal concoctions… nothing worked. Same story every time: big promises, zero results.</p>
+      <p>Then I stumbled on an article about a new formula that had just arrived in the U.S. It was developed by a scientist who had worked on the creation of Viagra… but this time, he designed it to be natural, safe, and without the side effects that nearly killed me.</p>
+      <p>I checked the official site. There it was — Rambo Max™, made with rare Himalayan Red Honey, Shilajit, and adaptogens that detox testosterone and bring it back to life.</p>
+      <p>They even offered a 30-day guarantee. I thought: what do I have to lose?<br>
+      I grabbed the 6-month supply, and four days later the package was at my door.”</p>
+    </blockquote>
+  
+    <p>And then came the morning that changed everything.</p>
+  
+    <blockquote class="quote">
+      <p>“When I woke up, my wife was in the mood. I decided to try Rambo Max™ for the first time. Just a small spoonful — and within minutes my dick was hard as steel.</p>
+      <p>We went at it for almost an hour. For the first time in years, I felt alive again.</p>
+      <p>But then… it wouldn’t go down.<br>
+      I had to get to work, so I threw on my clothes in a rush. My shorts were too loose… I didn’t realize how obvious it looked until the chaos started.”</p>
+    </blockquote>
+  </section>
+  <!-- === FIM BLOCO === -->
+  
+
+   
+
+<!-- === INÍCIO BLOCO: The Traffic Jam Incident === -->
+<section class="incident-section">
+    <h2>The Traffic Jam Incident</h2>
+  
+    <blockquote class="quote">
+      <p>“When my motorcycle stalled at a red light, the driver behind me started honking like crazy. I panicked, yelled back… and in the heat of the moment, I accidentally pointed down.</p>
+  
+      <p>That was it. He thought I was waving a gun at him. Within seconds, horns were blaring, people were screaming ‘He’s armed!’ and I was surrounded.</p>
+  
+      <p>Two officers rushed me, ordered me off the bike, and lifted my shirt. The moment they realized what it really was, they burst out laughing.</p>
+  
+      <p>I stood there, red-faced, trying to explain: ‘It’s not a weapon… it’s Rambo Max™.’<br>
+      I even had to pull up the product’s website on my phone to prove it before they let me go.”</p>
+    </blockquote>
+  
+    <p><strong>Ryan laughs about it now, but he’ll never forget the moment:</strong></p>
+  
+    <blockquote class="quote highlight-quote">
+      <p>“Last week I couldn’t stay hard for two minutes. That day, my dick was so hard the cops thought I was carrying a weapon. From that moment on, I only take Rambo Max™ if I know I won’t be leaving the house for at least 4 hours.”</p>
+    </blockquote>
+  </section>
+  <!-- === FIM BLOCO === -->
+  
+  <!-- === INÍCIO BLOCO: WARNING === -->
+<section class="warning-box">
+    <h2>⚠️ WARNING: Don’t Buy Fake Rambo Max™</h2>
+  
+    <p>Since this report went live, thousands of men rushed online looking for Rambo Max™. And we’ve already received complaints of scams: bottles bought on Amazon, eBay, and shady websites — either nothing arrived, or they got fake capsules with zero effect.</p>
+  
+    <p>To protect our readers, we contacted the original manufacturer. They confirmed the only official website and agreed to do something insane:</p>
+  
+    <p class="highlight-strong">👉 For a limited time, they are offering a special 60% OFF coupon for the complete Rambo Max™ treatment package — but only until <strong>October 5th, 2025</strong> or while stock lasts.</p>
+  </section>
+  <!-- === FIM BLOCO === -->
+
+  <!-- === INÍCIO BLOCO: Diferenciais e Benefícios === -->
+<section class="benefits-box">
+    <h2>And here’s what makes Rambo Max™ different from anything you’ve ever tried:</h2>
+  
+    <ul class="checklist green">
+      <li>✅ It’s not a quick fix.</li>
+      <li>✅ It’s not a risky pill.</li>
+      <li>✅ It’s a clinical-grade treatment designed specifically for men over 40 — a stage of life when testosterone starts to collapse and “Poisoned T” silently kills energy, strength, and performance.</li>
+    </ul>
+  
+    <p>By combining rare Himalayan Red Honey, Shilajit, Ashwagandha, and other adaptogens, Rambo Max™ doesn’t just restore firm, lasting erections. It also:</p>
+  
+    <ul class="checklist">
+      <li>💪 Rebuilds muscle mass and strength</li>
+      <li>⚡ Increases daily stamina and energy</li>
+      <li>🩺 Supports prostate health and hormone balance</li>
+      <li>🧠 Improves mental focus, mood, and drive</li>
+      <li>🔥 Restores confidence and intimacy in your relationship</li>
+    </ul>
+  
+    <p><strong>It’s the only formula made to fight on every front — not just the bedroom, but in your body, mind, and masculinity as a whole.</strong></p>
+  
+    <blockquote class="quote">
+      <p>There’s nothing like watching your wife look at you with lust again… hearing her beg for more… and knowing you can keep going as long as you want.</p>
+    </blockquote>
+  
+    <div class="cta-box">
+      👉 Click the <strong>BUTTON NOW</strong> to claim your official Rambo Max™ bottles before this page disappears.
+    </div>
+  </section>
+  <!-- === FIM BLOCO === -->
+
+  <!-- === INÍCIO BLOCO: ACT FAST — THE WINDOW IS CLOSING === -->
+<section class="urgent-box">
+    <h2>⚠️ ACT FAST — THE WINDOW IS CLOSING</h2>
+  
+    <p>Listen carefully: <strong>Rambo Max™ isn’t some generic pill you can find on Amazon or in a corner pharmacy.</strong></p>
+  
+    <p>It’s built around rare Himalayan Red Honey and purified Shilajit — ingredients that take months to harvest and can’t simply be manufactured overnight.</p>
+  
+    <p>That means when the current supply runs out, it could take <strong>6–8 months</strong> before another batch is ready.</p>
+  
+    <p>And since this story went viral, demand has exploded — thousands of men are rushing to secure their bottles right now.</p>
+  
+    <p class="highlight-strong">The manufacturer already warned us: once this anniversary batch is gone, not only will the <u>60% discount disappear</u>, but the next lot may be sold at full price or higher.</p>
+  
+    <p><strong>And here’s the kicker:</strong><br>
+    If this report spreads too far, the company may be forced to pull the offer offline completely — just like what happened with other natural male performance breakthroughs.</p>
+  
+    <p>So if you’re reading this, consider yourself lucky — because you’re seeing it while supplies are still available.</p>
+  
+    <blockquote class="quote">
+      <p><strong>But the clock is ticking.</strong> Once the reserved supply is gone, so is your chance to take advantage of the launch discount and secure your masculinity at today’s price.</p>
+    </blockquote>
+  
+    <div class="cta-box urgent-cta">
+      👉 Click the <strong>BUTTON NOW</strong> to claim your official Rambo Max™ bottles before this page disappears.
+    </div>
+  </section>
+  <!-- === FIM BLOCO === -->
+  
+    
+  <!-- === INÍCIO BLOCO: What Happens If You Do Nothing? === -->
+<section class="consequence-box">
+    <h2>What Happens If You Do Nothing?</h2>
+  
+    <p>Let’s be brutally honest here: erectile dysfunction doesn’t just “stay the same.”<br>
+    <strong>If you ignore it, it gets worse. Much worse.</strong></p>
+  
+    <ul class="checklist danger">
+      <li>❌ Your erections get weaker… until they stop coming at all.</li>
+      <li>❌ Your penis and even your balls begin to shrink, because they’re not being properly “fed” with testosterone and blood flow.</li>
+      <li>❌ The constant hormonal imbalance raises your risk of prostate cancer and other age-related diseases.</li>
+      <li>❌ Every year you ignore it, you lose more muscle, more energy, more confidence — until even looking a woman in the eye feels humiliating.</li>
+    </ul>
+  
+    <p>And here’s the scary truth: many men, crushed by years of failure with women, actually give up on women altogether… some even end up chasing intimacy elsewhere just to feel “wanted” again.</p>
+  
+    <p>Meanwhile, the men who keep gambling with Viagra, Cialis, or other pharmacy drugs are playing Russian roulette with their lives.</p>
+  
+    <blockquote class="quote dark-quote">
+      <p>The side effects pile up: skyrocketing blood pressure, blurred vision, migraines… and the worst of all: heart attacks and strokes.<br>
+      <strong>Doctors are clear: relying on blue pills long-term is like putting your heart on a ticking time bomb.</strong></p>
+    </blockquote>
+  
+    <p><strong>Do you really want to risk dropping dead on top of your wife, just because you didn’t fix the root cause?</strong></p>
+  
+    <div class="cta-box urgent-cta">
+      👉 Click the <strong>BUTTON NOW</strong> to claim your official Rambo Max™ bottles before this page disappears.
+    </div>
+  </section>
+  <!-- === FIM BLOCO === -->
+  
+   
+    <p class="footer">Sponsored informational content. Results vary. Always follow label directions and consult a qualified professional if you have medical concerns.</p>
+  </article>
+</main>
+
+<script>
+  // Barra de progresso de leitura
+  (function(){
+    const bar = document.getElementById('progressBar');
+    function onScroll(){
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // FAQ acordeão
+  (function(){
+    document.querySelectorAll('[data-faq]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        const item = el.closest('.faq-item');
+        const a = item.querySelector('.faq-a');
+        const chev = el.querySelector('.chev');
+        const open = a.style.display==='block';
+        a.style.display = open ? 'none' : 'block';
+        chev.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+    });
+  })();
+
+  // Data/hora pt-BR no topo
+  (function(){
+    const el = document.getElementById('pubDate');
+    try{
+      const now = new Date();
+      el.textContent = new Intl.DateTimeFormat('pt-BR', {
+        day:'2-digit', month:'2-digit', year:'numeric',
+        hour:'2-digit', minute:'2-digit'
+      }).format(now);
+    }catch(e){}
+  })();
+</script>
+</body>
+</html>
