@@ -71,3 +71,86 @@
   /* segurança / no overflow */
   .mech, .mech *{ box-sizing:border-box; }
   
+
+  /* ===== Mechanism / Ingredients — Mobile minimal ===== */
+
+/* GRID BASE (mantém desktop como está) */
+.mech {
+    --mech-bg:#0B0B0C; --mech-ink:#F2F2F3; --mech-line:rgba(255,255,255,.12);
+    --mech-accent: var(--accent,#E45A1F);
+    background:var(--mech-bg); color:var(--mech-ink);
+  }
+  .mech-wrap{max-width:1200px;margin:0 auto;padding:34px 16px}
+  .mech-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  @media (max-width:1024px){ .mech-grid{grid-template-columns:1fr 1fr} }
+  @media (max-width:720px){ .mech-grid{grid-template-columns:1fr} }
+  
+  /* CARD BASE */
+  .mech-card{
+    background:linear-gradient(180deg,#131419,#0F1013);
+    border:1px solid var(--mech-line);
+    border-radius:18px; overflow:hidden;
+    box-shadow:0 14px 36px rgba(0,0,0,.45);
+  }
+  .mech-body{padding:16px}
+  .mech-title{margin:0 0 8px;font-weight:900;font-size:20px}
+  .mech-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  .mech-list li{display:flex;gap:8px;align-items:flex-start;line-height:1.4}
+  .mech-dot{
+    width:22px;height:22px;border-radius:999px;flex:0 0 22px;
+    display:grid;place-content:center;
+    color:#fff;font-weight:900;font-size:12px;
+    background:linear-gradient(180deg,#F1733A,var(--mech-accent));
+    box-shadow:0 6px 18px rgba(228,90,31,.25);
+  }
+  
+  /* IMAGEM DESKTOP (capa meio-a-meio) */
+  .mech-media{
+    width:100%; height:220px; background:#0E0F12; position:relative; overflow:hidden;
+  }
+  .mech-media img{width:100%;height:100%;object-fit:cover;display:block}
+  
+  /* ===== MOBILE MINIMAL ===== */
+  @media (max-width:720px){
+    /* Esconde a capa grande e usa thumb pequeno à direita */
+    .mech-media{display:none}
+  
+    /* Card vira layout compacto de 1 linha: texto + thumb opcional */
+    .mech-card{
+      padding:12px 12px;      /* padding externo leve */
+      border-radius:16px;
+    }
+    .mech-body{
+      display:grid;
+      grid-template-columns: 1fr auto;   /* texto | thumb */
+      gap:12px; padding:0;               /* já temos padding no card */
+    }
+    .mech-title{font-size:18px;margin:0 0 6px}
+    .mech-list{gap:6px}
+    .mech-dot{width:18px;height:18px;font-size:11px}
+  
+    /* Thumb (usa a mesma imagem do card) */
+    .mech-thumb{
+      width:86px;height:86px;border-radius:12px; overflow:hidden;
+      border:1px solid var(--mech-line); background:#0D0E12;
+    }
+    .mech-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  
+    /* Respiros consistentes entre cards */
+    .mech-grid > .mech-card{margin-bottom:8px}
+  
+    /* Nunca deixa nada estourar a largura */
+    .mech, .mech *{box-sizing:border-box}
+    .mech-card, .mech-body, .mech-list li{max-width:100%; overflow-wrap:anywhere; word-break:break-word}
+  }
+  
+  /* ===== (OPCIONAL) Esconder thumb no mobile para visual ultra-minimal ===== */
+  /* Descomente se quiser sumir com o thumb: */
+  /*
+  @media (max-width:720px){
+    .mech-thumb{display:none}
+    .mech-body{grid-template-columns:1fr}
+  }
+  */
+
+  
