@@ -1,0 +1,73 @@
+/* ===== Mechanism / How It Works (cards grid) ===== */
+:root{
+    --mech-bg:#0A0A0B;
+    --mech-ink:#F2F2F3;
+    --mech-muted:#C9CDD6;
+    --mech-panel:#111214;
+    --mech-line:rgba(255,255,255,.10);
+    --mech-accent:var(--accent, #E45A1F);
+  }
+  
+  .mech{background:var(--mech-bg); color:var(--mech-ink); padding:56px 16px;}
+  .mech-wrap{max-width:1200px; margin:0 auto;}
+  .mech-head{ text-align:center; margin:0 auto 24px; max-width:900px;}
+  .mech-kicker{color:#FFB794; font-weight:900; letter-spacing:.14em; text-transform:uppercase; margin:0 0 4px;}
+  .mech-title{font-weight:900; font-size:clamp(28px,4.5vw,44px); margin:0 0 10px;}
+  .mech-lead{color:#EDECF2; opacity:.95; line-height:1.55; margin:0;}
+  
+  /* grid de cards */
+  .mech-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:18px;
+    margin-top:18px;
+  }
+  @media (max-width:1100px){ .mech-grid{ grid-template-columns: repeat(2, 1fr);} }
+  @media (max-width:680px){  .mech-grid{ grid-template-columns: 1fr; } }
+  
+  /* card */
+  .mech-card{
+    background:linear-gradient(180deg,#111214,#16181B);
+    border:1px solid var(--mech-line);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 16px 38px rgba(0,0,0,.45);
+    display:grid;
+    grid-template-columns: 1.2fr .9fr;  /* texto | imagem */
+    min-height:230px;
+  }
+  @media (max-width:680px){ .mech-card{ grid-template-columns: 1fr; } }
+  
+  .mech-body{ padding:14px 16px 16px; display:flex; flex-direction:column; gap:10px;}
+  .mech-name{font-weight:900; font-size:1.25rem; margin:2px 0 4px;}
+  .mech-bullets{ list-style:none; padding:0; margin:4px 0 0; display:grid; gap:8px;}
+  .mech-bullets li{ display:flex; gap:.55rem; align-items:flex-start; color:#E7E8EC;}
+  .mech-bullets li .ico{
+    width:22px; height:22px; border-radius:999px; flex:0 0 22px;
+    display:grid; place-content:center; font-size:12px; font-weight:900; color:#fff;
+    background:linear-gradient(180deg,#F1733A,var(--mech-accent));
+    box-shadow:0 6px 18px rgba(228,90,31,.25);
+  }
+  
+  /* thumb direita */
+  .mech-media{ position:relative; background:#0E0F12; }
+  .mech-media img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .mech-dose{
+    position:absolute; left:10px; bottom:10px;
+    background:rgba(0,0,0,.55); backdrop-filter:saturate(120%) blur(2px);
+    border:1px solid rgba(255,255,255,.18); color:#fff; font-weight:900;
+    padding:.22rem .5rem; border-radius:999px; font-size:.82rem;
+  }
+  
+  /* badges de qualidade (faixa inferior) */
+  .mech-badges{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
+  .mech-badge{
+    background:#15161B; color:#EDECF2; border:1px solid var(--mech-line);
+    padding:.45rem .65rem; border-radius:999px; font-weight:800; font-size:.9rem;
+  }
+  
+  /* segurança / no overflow */
+  .mech, .mech *{ box-sizing:border-box; }
+  
