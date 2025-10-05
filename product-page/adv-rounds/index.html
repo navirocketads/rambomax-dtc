@@ -1,0 +1,389 @@
+<!-- ===== Paste into Elementor: Men's Health style article (with full copy) ===== -->
+<div id="mag-article">
+  <style>
+    /* ===== Scope & Reset ===== */
+    #mag-article, #mag-article * { box-sizing: border-box; }
+    #mag-article { --max: 900px; --brand:#0c131a; --accent:#177b4d; --gold:#c7a559; --muted:#6b7280; --ink:#101418; --soft:#f6f7f9; background:#fff; color:var(--ink); font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif; line-height:1.65; }
+    #mag-article img { max-width:100%; height:auto; display:block; border-radius:8px; }
+    #mag-article .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    #mag-article h1 { font-size: clamp(1.8rem, 2.6vw + 1.2rem, 2.6rem); line-height:1.15; letter-spacing:.3px; margin:.35rem 0 .75rem; font-weight: 800; }
+    #mag-article h2 { font-size: 1.25rem; letter-spacing:.6px; text-transform: uppercase; font-weight:800; margin:1.8rem 0 .4rem; }
+    #mag-article h3 { font-size:1.05rem; font-weight:800; letter-spacing:.4px; text-transform:uppercase; margin:1.4rem 0 .3rem }
+    #mag-article p { margin: .9rem 0; }
+    #mag-article .muted { color: var(--muted); }
+    #mag-article .caps { text-transform: uppercase; letter-spacing:.06em; }
+    #mag-article .divider { height:1px; background:#e5e7eb; margin:20px 0; }
+
+    /* ===== Header / Masthead ===== */
+    #mag-article .masthead { background: var(--brand); color:#fff; }
+    #mag-article .masthead .wrap { padding:16px 20px; }
+    #mag-article .brand { font-weight:900; font-size:1.35rem; }
+    #mag-article .brand-bar { height:6px; background: var(--gold); margin-top:8px; border-radius:2px; }
+
+    /* ===== Breadcrumb ===== */
+    #mag-article .crumbs { color:#2b333a; font-weight:700; padding:18px 0 4px; }
+    #mag-article .crumbs a { color:#2b333a; text-decoration:none; }
+    #mag-article .crumbs span { color:#64748b; }
+
+    /* ===== Underline accent ===== */
+    #mag-article .underline { height:6px; width:120px; background: var(--accent); border-radius:4px; margin:.8rem 0 1rem; }
+
+    /* ===== Byline block ===== */
+    #mag-article .byline { display:grid; grid-template-columns:56px 1fr; gap:14px; align-items:center; }
+    #mag-article .avatar { width:56px; height:56px; border-radius:50%; object-fit:cover; border:2px solid #e5e7eb; }
+    #mag-article .meta { font-size:.95rem; }
+    #mag-article .meta strong { display:block; }
+
+    /* ===== Social counters ===== */
+    #mag-article .socials { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0 6px; }
+    #mag-article .soc { border:1px solid #e5e7eb; border-radius:10px; padding:10px 12px; display:flex; align-items:center; justify-content:center; gap:8px; background:#fff; font-weight:700; }
+    #mag-article .soc small { display:block; font-weight:600; color:#111827; }
+
+    /* ===== Featured in ===== */
+    #mag-article .featured { border:2px solid #cfe7da; padding:20px; border-radius:14px; background:#f7fbf9; text-align:center; }
+    #mag-article .featured h4 { margin:0 0 12px; font-weight:900; letter-spacing:.12em; color:#0a2150; }
+    #mag-article .logos { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; opacity:.55; filter:grayscale(100%); }
+    @media (max-width:900px){ #mag-article .logos { grid-template-columns:repeat(3,1fr); } }
+    @media (max-width:520px){ #mag-article .logos { grid-template-columns:repeat(2,1fr); } }
+
+    /* ===== Pull quote ===== */
+    #mag-article .pull { font-size:1.15rem; font-weight:800; color:#0b1f5a; line-height:1.45; margin:18px 0 6px; }
+
+    /* ===== Body typography ===== */
+    #mag-article .body { font-size:1.05rem; }
+    #mag-article .body strong { font-weight:800; }
+    #mag-article .body em { font-style:italic; }
+
+    /* ===== Back to top button ===== */
+    #mag-article .to-top { position: fixed; right: 18px; bottom: 18px; width: 46px; height: 46px; border-radius:999px; border:none; background:#0f1a2b; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.25); cursor:pointer; opacity:.92; z-index:20; }
+    #mag-article .to-top.hidden { display:none; }
+
+    /* ===== Image caption ===== */
+    #mag-article figure { margin: 14px 0; }
+    #mag-article figcaption { font-size:.9rem; color:#6b7280; margin-top:6px; text-align:center; }
+    /* CTA button */
+    #mag-article .btn { display:inline-block; background:#177b4d; color:#fff; padding:14px 18px; border-radius:12px; font-weight:900; text-decoration:none; }
+  </style>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="wrap">
+      <div class="brand">Men's Health Magazine</div>
+      <div class="brand-bar"></div>
+    </div>
+  </header>
+
+  <!-- Article container -->
+  <article class="wrap">
+    <!-- Breadcrumb -->
+    <!-- <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="#">Home</a> <span>›</span> <a href="#">Men’s Wellness</a> <span>›</span> Libido-Boosting Alternatives
+    </nav>
+ -->
+    <!-- Headline -->
+    <h1>How I Went From Lasting 1 Minute to Going 6 Rounds — Without Pills or Injections
+    </h1>
+    <div class="underline"></div>
+
+    <!-- Byline / Meta -->
+    <section class="byline">
+      <img class="avatar" src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Screenshot-2025-09-29-at-04.53.00.jpg" alt="Author">
+      <div class="meta">
+        <div class="muted">Mon. Sep 28th, 2025 | 10:45 am EST — <strong>214,790 views</strong></div>
+        <div><strong>By Dylan Masters</strong><br></div>
+      </div>
+    </section>
+
+    <!-- Hero image -->
+      <!-- VTurb SmartPlayer -->
+<div style="max-width:900px;margin:0 auto">
+  <vturb-smartplayer id="vid-68d9d702f04f55b334a574b8" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/d59c0ebe-8eca-4f16-bfc0-58d2b6b3a9cc/players/68d9d702f04f55b334a574b8/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+</div>
+
+    <!-- Social counters
+    <div class="socials">
+      <div class="soc"><img src="https://placehold.co/20x20" alt=""> <div><small>600k+ Followers</small> Instagram</div></div>
+      <div class="soc"><img src="https://placehold.co/20x20" alt=""> <div><small>600k+ Likes</small> Facebook</div></div>
+      <div class="soc"><img src="https://placehold.co/20x20" alt=""> <div><small>160k+ Followers</small> Twitter</div></div>
+    </div> -->
+
+    <!-- Featured in logos -->
+    <!-- <section class="featured">
+      <h4 class="caps">FEATURED IN</h4>
+      <div class="logos">
+        <img src="https://placehold.co/300x80?text=Men%27s+Health" alt="">
+        <img src="https://placehold.co/300x80?text=Forbes" alt="">
+        <img src="https://placehold.co/300x80?text=Business+Insider" alt="">
+        <img src="https://placehold.co/300x80?text=Muscle+%26+Fitness" alt="">
+        <img src="https://placehold.co/300x80?text=Men%27s+Journal" alt="">
+      </div>
+    </section> -->
+
+    <!-- Pull quote & intro -->
+    <p>The truth about why men over 40 lose their drive… and how a strange Himalayan discovery is helping thousands get it back.
+    </p>
+
+    <figure>
+      <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/10/bd9adc9a-40e8-4bf0-af07-2d3e56b96732.avif" alt="Blue pills">
+    </figure>
+
+    <!-- Body -->
+    <div class="body">
+      <h2>I Knew Something Was Wrong When My Wife Stopped Moaning</h2>
+
+
+      <p>You know the difference between polite noises and the real ones.
+        That night… silence.</p>
+      <p>Mary was lying there, eyes fixed on the ceiling — and I could feel the humiliation flooding the room.
+      </p>
+
+      <p> Then came the smile — that fake, forced smile wives give when they’re trying to be kind but can’t hide their disappointment.
+      </p>
+
+      <p><strong>“That was nice, honey. You are too tired” she whispered.</strong></p>
+      <p>Nice? Nice is what you say about takeout food — not about sex with the man you married.</p>
+      <p>And it wasn’t the first time.
+        The first few times I couldn’t get it up, she tried to soothe me.
+       </p>
+      <p><strong>“It’s okay, love… these things happen. Don’t worry about it.”</strong></p>
+      <p>But as the months passed, the patience turned into frustration.
+        Then into fear.
+        Then into anger.
+       </p>
+      <p>She started asking questions at night, after another failed attempt:
+      </p>
+      <p><strong>“What’s happening to you? Are you seeing someone else?”</strong></p>
+      <p>“Do you not find me attractive anymore?”
+      </p>
+      <p>“Am I not beautiful enough for you?”
+      </p>
+      <p class="pull">And then, the dagger:
+      </p>
+      <p class="pull">“Have you turned gay or something?”
+      </p>
+
+      <p>Each question cut deeper than the last.
+        Every failure in bed wasn’t just killing my confidence — it was killing our relationship.
+      
+       </p>
+       <p> I felt like a spectator in my own body. Trapped. Powerless.
+        And every failure made the next one worse.</p>
+
+      <!-- ====== COPY ADICIONADA A PARTIR DAQUI ====== -->
+
+      <h2>The Silent Epidemic Destroying Men Over 40
+      </h2>
+
+<figure>
+  <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Google_AI_Studio_2025-10-04T23_04_17.816Z.png">
+</figure>     
+     
+      <p>Here’s the truth nobody tells you:</p>
+   
+      <p> If you’re over 40 and your performance is slipping, it’s not because you’re old or “stressed.”
+      </p>
+      <p class="pull"> It’s because your body’s most powerful male hormone, testosterone, has been poisoned.
+      </p>
+      <p>Scientists call it “Testosterone Contamination Syndrome.”
+      </p>
+      <p class="pull">Every day, microscopic toxins from food, plastics, and even tap water infiltrate your bloodstream, clogging your arteries and blocking hormone receptors.
+      </p>
+      <p> The result? </p>
+      <ul>
+        <li>Shrinking erections
+        </li>
+        <li>Dropping energy
+        </li>
+        <li>Mood swings
+        </li>
+        <li>And a quiet, invisible death of your drive</li>
+      </ul>
+      <p class="pull">Even worse — your body starts converting your remaining testosterone into estrogen.
+      </p>
+      <p>Your muscles soften. Your confidence fades.</p>
+      <p>Your wife starts to look at you differently.</p>
+      <p>And deep down, you know she misses the man you used to be.</p>
+
+      <h2>The Discovery That Changed Everything
+      </h2>
+      <figure>
+        <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Google_AI_Studio_2025-10-04T23_08_38.376Z.png">
+      </figure>
+
+      <p class="pull">“I tried everything — blue pills, testosterone shots, “miracle teas,” even that sketchy clinic downtown.        ”</p>
+
+      <p><strong> All of them left me worse.</strong></p>
+      <p>The pills gave me chest pain. The injections made me anxious</p>
+      <p>My wife had planned this big night. Beautiful restaurant. Candlelight. Even booked a hotel after. But halfway through dessert, she reached across the table, touched my hand, and said:</p>
+      <p class="pull">Then I came across a medical report about a rare Himalayan blend that naturally detoxifies these testosterone-blocking toxins.</p>
+      <p>It combined two ancient compounds that monks had used for centuries to maintain virility and stamina at extreme altitudes:
+      </p>
+       <p class="pull">Red Honey from Himalayan bees and pure Shilajit resin from rock minerals.</p>
+<p>Together, they flush toxins from the blood, reactivate testosterone at the cellular level, and restore vascular flow — allowing the body to perform again, naturally.</p>
+<figure>
+  <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/10/ChatGPT-Image-29-de-set.-de-2025-03_55_02.png">
+</figure>
+
+      <p class="pull">“AT FIRST I THOUGHT IT WAS A JOKE… UNTIL I WOKE UP FEELING 25 AGAIN”</p>
+
+      <h2>Introducing Rambo Max Caps™</h2>
+
+<p>A doctor-formulated daily capsule for men 40+ that revives male performance from the inside out.
+</p>
+<p><strong>Each dose contains:
+</strong></p>
+<ul>
+  <li>🍯 Red Honey from Himalayan hives — improves circulation and nitric-oxide production for steel-hard erections</li>
+  <li>🪨 Authentic Shilajit resin — delivers 85+ minerals that reactivate testosterone at cellular level</li>
+  <li>🌿 Ashwagandha & Boron complex — crushes stress hormones and boosts free T </li>
+  <li>⚡ Zinc + Panax Ginseng — supercharges libido and stamina  </li>
+</ul>
+<p>This isn’t a 4-hour quick fix.</p>
+<p><strong> It’s a complete hormonal reboot — bringing back the man you were meant to be.</strong></p>
+
+      <figure>
+        <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/RAMBOMAX-BENEFITS.jpg" alt="Product hero">
+      </figure>
+
+      <h2>THE TRANSFORMATION WAS  SHOCKING</h2>
+   
+      <ul>
+        <li>Week 1: Morning wood came back — first time in months.</li>
+        <li>Week 2: Energy all day. No crashes.</li>
+        <li>Week 3: Confidence returned. My wife started initiating again.</li>
+        <li>Month 2: Lasted nearly an hour — she couldn’t believe it.</li>
+        <li>Month 3: Harder, fuller erections and insane recovery time. I could go for multiple rounds without even thinking about it.</li>
+      </ul>
+      <p class="pull">Mary literally told me:</p>
+      <p class="pull">“It’s like being with the man I married again.”</p>
+
+      <h2>WHY “MODERN” SOLUTIONS ARE FAILING MEN</h2>
+      <p>Most over-the-counter solutions rely on temporary tricks — vasodilators, caffeine, or hormones that can backfire. <strong>Rambo Max</strong> works differently — by helping your body restore what it used to do naturally. No prescription. No weird side effects. Just real support.</p>
+
+      <p>Picture waking up with:</p>
+      <ul>
+        <li>🔥 Morning energy that doesn’t need 2 cups of coffee</li>
+        <li>💪 Motivation to hit the gym or power through your workday</li>
+        <li>🍆 Size and stamina that leave your partner speechless</li>
+        <li>😏 A sex drive that feels better than it did in your 20s</li>
+      </ul>
+      <p>That’s what Rambo Max users report — and that’s why this formula is catching fire.</p>
+
+
+      <h2>⚠️ LIMITED STOCK WARNING</h2>
+      <p>Due to viral demand and social media exposure, Rambo Max Caps are frequently out of stock. To protect supply for real users, the manufacturer has authorized one-time access through this page only.</p>
+      <p>👉 Tap below to claim your <strong>EXCLUSIVE 60% OFF + 3 GIFTS </strong> offer — while supplies last.</p>
+
+      <p><a class="btn" href="https://rambomax-dtc.vercel.app/">CHECK AVAILABILITY</a></p>
+
+      <div class="divider"></div>
+
+      <h2>🔴 LIMITED TIME READER-ONLY SPECIAL</h2>
+      <p>Ordering now makes you eligible for <strong>60% OFF + 3 GIFTS</strong> Rambo Max Caps. Only available here. Limited to the first 200 customers only.</p>
+
+      <a href="https://rambomax-dtc.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <figure>
+            <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/rambomax-checkavailability.jpg" 
+                 alt="Offer badge">
+          </figure>
+        </a>
+        
+
+      <h3>Jason’s Rating: ★★★★☆ 4.75 Stars</h3>
+      <p><em>Don’t come for me—but I took off half a star, and here’s why… Rambo Max worked almost too well.</em></p>
+      <p>Let’s just say I wasn’t quite ready for the boost in size, stamina, and morning “energy.” My girl noticed. The guys at the gym noticed. Even my sleep improved. If this is what natural testosterone support feels like, I’m hooked.</p>
+      <p>No wonder Xara has thousands of rave reviews from real guys. Just scroll the comments — they speak for themselves.</p>
+      <p><strong>⚠ Rambo Max Caps are now 60% OFF — and going fast.</strong></p>
+      <p>Already loving the idea of better drive and performance? Then why wait? Grab yours before someone else claims your stash.</p>
+      <a href="https://rambomax-dtc.vercel.app/" target="_blank" rel="noopener noreferrer">
+      <p><a class="btn" href="https://rambomax-dtc.vercel.app/">CHECK AVAILABILITY NOW</a></p>
+      </a>
+
+
+      <h2>What Happens If You Do Nothing</h2>
+      <p>Let’s be brutally honest — ED never “stays the same.”</p>
+      <p><strong> If you ignore it, it gets worse:</strong></p>
+      <ul>
+        <li>❌ Your erections get weaker until they stop completely.</li>
+        <li>❌ Your penis and even your testicles begin to shrink from lack of blood flow.</li>
+        <li>❌ Hormonal imbalance increases your risk of prostate cancer and cardiovascular disease.</li>
+        <li>❌ Every failure kills your confidence — and many men withdraw from women altogether.</li>
+      </ul>
+      <p>Some men even give up on relationships entirely, choosing loneliness over humiliation.
+        Don’t become one of them.</p>
+
+         
+        
+ 
+
+      <a href="https://rambomax-dtc.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <figure>
+          <figure>
+            <img src="https://vsl.infotrendnews.online/wp-content/uploads/2025/09/ChatGPT-Image-29-de-set.-de-2025-06_25_05.png">
+          </figure>
+      </a>
+
+     
+      <!-- ====== FIM DA COPY ADICIONADA ====== -->
+    </div>
+
+    <div class="divider"></div>
+
+  
+    <div class="divider" style="margin:40px 0; border-top:1px solid #ddd;"></div>
+
+    <footer style="font-family:Arial, sans-serif; font-size:0.85rem; color:#555; line-height:1.5; max-width:900px; margin:0 auto; text-align:center;">
+    
+      <p style="margin-bottom:10px;">
+        © <span id="year"></span> Men's Health Magazine. All rights reserved.  
+        • <a href="#" style="color:#555; text-decoration:underline;">Privacy Policy</a>  
+        • <a href="#" style="color:#555; text-decoration:underline;">Terms & Conditions</a>  
+        • <a href="#" style="color:#555; text-decoration:underline;">Contact Us</a>
+      </p>
+    
+      <p style="font-size:0.75rem; color:#777; margin-top:20px; text-align:justify;">
+        <strong>Disclaimer:</strong> The information presented on this website is for informational and educational purposes only. 
+        This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. 
+        Always consult with your physician or qualified healthcare professional before starting any supplement, diet, or exercise program.  
+      </p>
+    
+      <p style="font-size:0.75rem; color:#777; text-align:justify;">
+        Representations regarding the efficacy and safety of this product have not been evaluated by the Food and Drug Administration.  
+        The testimonials and case studies found on this website are not intended to represent or guarantee that anyone will achieve the same or similar results.  
+      </p>
+    
+      <p style="font-size:0.75rem; color:#777; margin-top:15px;">
+        By using this site, you agree to follow the <a href="#" style="color:#777; text-decoration:underline;">Terms of Service</a> and all applicable laws and regulations.  
+      </p>
+    </footer>
+    
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    
+
+  </article>
+
+  <!-- Back to top -->
+  <button class="to-top hidden" aria-label="Back to top">↑</button>
+
+  <script>
+    // year
+    document.querySelector('#mag-article #year').textContent = new Date().getFullYear();
+    // back to top visibility
+    const btn = document.querySelector('#mag-article .to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) btn.classList.remove('hidden'); else btn.classList.add('hidden');
+    });
+    btn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+    // smooth scroll internal anchors
+    document.querySelectorAll('#mag-article a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href'); if(id.length<2) return;
+        const el=document.querySelector(id); if(!el) return;
+        e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'});
+      })
+    });
+  </script>
+</div>
+<!-- ===== End ===== -->
