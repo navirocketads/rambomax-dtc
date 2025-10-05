@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
               title:"Most Popular", sub:"3 Bottles · 90-Day Supply", was:597, total:90, per:30, save:420, days:90,
               note:"Includes FREE US Shipping + 2 Gifts", href:"https://pay.gvitalabs.com/checkout/198194803:1", sku:"RMX-3",
               gifts:[
-                {name:"Lesbian Trick - Sexual Performance Video Lessons ($140) — FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Screenshot-2025-09-29-at-08.25.42.jpg"},
+                {name:"3 Techniques to last at least 30 minutes in bed ($49) - FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Screenshot-2025-09-29-at-08.25.42.jpg"},
                 {name:"1K Testosterone Guide ($49) — FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/testoGuide.jpg"}
               ]},
       six:  { ribbon:"BEST VALUE", 
@@ -33,11 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
               note:"FREE US Shipping + 3 Gifts + Biggest Savings", href:"https://pay.gvitalabs.com/checkout/198194804:1", sku:"RMX-6",
               gifts:[
                 {name:"Rambo Max App - Daily Progress Track ($97/mo) — FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/ramboMaxAPP.jpg"},
-                {name:"Lesbian Trick - Sexual Performance Video Lessons ($140) — FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Screenshot-2025-09-29-at-08.25.42.jpg"},
+                {name:"3 Techniques to last at least 30 minutes in bed ($49) - FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Screenshot-2025-09-29-at-08.25.42.jpg"},
                 {name:"1K Testosterone Guide ($49) — FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/testoGuide.jpg"}
               ]}
     };
   
+
+    
     // 2) Cache
   const $ = s => document.querySelector(s);
   const el = {
