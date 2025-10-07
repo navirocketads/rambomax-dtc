@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   "https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-7_21PM.webp",
   "https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-7_30PM.webp"],
               title:"Basic", sub:"1 Pack · 30-Day Supply", was:199, total:39, per:39, save:130, days:30,
-              note:"Free US Shipping on 3+ bottles", href:"https://pay.gvitalabs.com/checkout/198194802:1", sku:"RMX-1", gifts:[] },
+              note:"Free US Shipping on 3+ packs", href:"https://pay.gvitalabs.com/checkout/198194802:1", sku:"RMX-1", gifts:[] },
       three:{ ribbon:"MOST POPULAR", 
       imgs:["https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-6_39PM.webp",
       "https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-7_18PM.webp",
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el.t.textContent = k.title;
     el.s.textContent = k.sub;
 
-    el.now.innerHTML     = `${fmt(k.per)} <span class="rmx-unit">/ bottle</span>`;
+    el.now.innerHTML     = `${fmt(k.per)} <span class="rmx-unit">/ pack</span>`;
     el.was.textContent   = fmt(k.was);
     el.total.textContent = `Total: ${fmt(k.total)}`;
     el.save.textContent  = `Save ${fmt(k.save)}`;
