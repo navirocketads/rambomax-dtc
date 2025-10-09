@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-7_29PM.webp",
   "https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-7_21PM.webp",
   "https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-7_30PM.webp"],
-              title:"Basic", sub:"1 Pack · 30-Day Supply", was:199, total:39, per:39, save:130, days:30,
+              title:"Basic", sub:"1 Pack · 30-Day Supply", was:199, total:49, per:49, save:130, days:30,
               note:"Free US Shipping on 3+ packs", href:"https://pay.gvitalabs.com/checkout/198194802:1", sku:"RMX-1", gifts:[] },
       three:{ ribbon:"MOST POPULAR", 
       imgs:["https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-6_39PM.webp",
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-7_29PM.webp",
   "https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-7_21PM.webp",
   "https://vsl.infotrendnews.online/wp-content/uploads/2025/10/Generated-Image-October-07-2025-7_30PM.webp"],
-              title:"Most Popular", sub:"3 Packs · 90-Day Supply", was:597, total:90, per:30, save:420, days:90,
+              title:"Most Popular", sub:"3 Packs · 90-Day Supply", was:597, total:96, per:32, save:420, days:90,
               note:"Includes FREE US Shipping + 2 Gifts", href:"https://pay.gvitalabs.com/checkout/198194803:1", sku:"RMX-3",
               gifts:[
                 {name:"3 Techniques to last at least 30 minutes in bed ($49) - FREE", img:"https://vsl.infotrendnews.online/wp-content/uploads/2025/09/Screenshot-2025-09-29-at-08.25.42.jpg"},
