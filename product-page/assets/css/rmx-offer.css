@@ -33,48 +33,7 @@
 @media (max-width:980px){
   .rmx-stage{min-height:360px;padding-bottom:24px}
 }
-
-/* ===== Gallery (scroll-snap) ===== */
-.rmx-gallery{
-  display:flex;gap:12px;
-  width:100%;height:100%;
-  overflow-x:auto;overflow-y:hidden;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-}
-.rmx-gallery::-webkit-scrollbar{display:none}
-
-.rmx-slide{
-  flex:0 0 100%;
-  scroll-snap-align:center;
-  display:grid;place-items:center;
-  border-radius:12px;overflow:hidden;
-  background:linear-gradient(180deg,#1B1D21 0%, #121316 100%);
-  box-shadow:0 22px 52px rgba(0,0,0,.55);
-}
-.rmx-slide img{
-  width:100%;height:auto;display:block;object-fit:contain;
-  /* limite saudável pra não ficar gigante em telas muito altas */
-  max-height:520px;
-}
-@media (max-width:980px){
-  .rmx-slide img{max-height:420px}
-}
-
-/* ===== Dots ===== */
-.rmx-dots{
-  position:absolute;left:0;right:0;bottom:10px;
-  display:flex;justify-content:center;gap:8px;pointer-events:auto
-}
-.rmx-dot{
-  width:9px;height:9px;border-radius:999px;
-  background:rgba(255,255,255,.35);
-  border:1px solid rgba(0,0,0,.25);
-  transition:transform .15s ease, background-color .15s ease, border-color .15s ease;
-}
-.rmx-dot.is-active{background:var(--accent);border-color:var(--accent)}
-.rmx-dot:hover{transform:scale(1.1)}
-
+ 
 /* ===== Ribbon ===== */
 .rmx-ribbon{
   position:absolute;top:18px;left:-18px;z-index:2;
@@ -140,13 +99,72 @@
   padding:.85rem 1rem;background:rgba(20,22,25,.6);color:#D9DBE2
 }
 
-/* ===== Acessibilidade / Motion ===== */
-@media (prefers-reduced-motion: reduce){
-  .rmx-dot{transition:none}
-}
-
-/* ===== Pequenos ajustes de layout grandes ===== */
-@media (min-width:1200px){
-  .rmx-wrap{gap:2.2rem}
-  .rmx-slide img{max-height:560px}
-}
+/* ====== PRODUCT GALLERY (fade slider, sem overflow) ====== */
+.rmx-stage{
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;                  /* sem vazamento */
+    background: linear-gradient(180deg,#1B1D21,#121316);
+    min-height: 360px;                 /* altura estável no mobile */
+    padding-bottom: 28px;              /* espaço pros dots */
+  }
+  
+  @media (min-width: 980px){
+    .rmx-stage{ min-height: 430px; }
+  }
+  
+  /* a “faixa” deixa de rolar: ela é um canvas fixo */
+  .rmx-gallery{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    touch-action: pan-y;               /* permite swipe horizontal sem scroll da página */
+    -webkit-user-select: none;
+            user-select: none;
+  }
+  
+  /* slides empilhados */
+  .rmx-slide{
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(.985);
+    transition: opacity .28s ease, transform .28s ease;
+    pointer-events: none;
+    display: grid;
+    place-items: center;
+  }
+  .rmx-slide.is-active{
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+  
+  /* imagem ocupa o stage com contain (sem estourar) */
+  .rmx-slide img{
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  
+  /* dots */
+  .rmx-dots{
+    position: absolute;
+    left: 0; right: 0; bottom: 8px;
+    display: flex; justify-content: center; gap: 8px;
+    pointer-events: auto;
+  }
+  .rmx-dot{
+    width: 8px; height: 8px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.55);
+    background: transparent;
+    opacity: .75;
+  }
+  .rmx-dot.is-active{
+    background: var(--accent, #E45A1F);
+    opacity: 1;
+  }
+  
