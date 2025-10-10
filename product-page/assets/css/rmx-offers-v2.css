@@ -1,162 +1,228 @@
-/* ===== Offers v3 (clean / aligned — FIX) ===== */
-:root{
-    --ov3-bg: #0E0F12;
-    --ov3-panel: #14161B;
-    --ov3-stroke: rgba(255,255,255,.10);
-    --ov3-soft: rgba(255,255,255,.06);
-    --ov3-ink: #F2F4F8;
-    --ov3-muted:#C9CDD6;
-    --ov3-weak:#9AA0AE;
-    --ov3-accent: var(--accent, #E45A1F);
-    --ov3-accent-700: var(--accent-700, #C24A1A);
+/* ===== OFFERS v3 (corrigido e equilibrado) ===== */
+.rmx-offers-v3 {
+    padding: 28px 16px;
+    background: transparent;
   }
   
-  .rmx-offers-v3{ padding:28px 16px; background:transparent; }
-  .ov3-wrap{ max-width:1200px; margin:0 auto; display:grid; gap:16px; min-width:0; }
-  
-  .ov3-card{
-    background:linear-gradient(180deg, #15171C, #111318);
-    border:1px solid var(--ov3-stroke);
-    border-radius:18px;
-    box-shadow:0 20px 50px rgba(0,0,0,.45);
-    color:var(--ov3-ink);
-    overflow:hidden;
-    padding:16px 16px 18px;
-    position:relative;
-    min-width:0;
+  .ov3-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 14px;
   }
-  .ov3-card.is-popular,
-  .ov3-card.is-best{ border-color:rgba(228,90,31,.35); }
   
-  /* Tag no topo direita (não cobre os preços) */
-  .ov3-card{ position: relative; }
-
-  .ov3-tag{
+  /* ===== CARD ===== */
+  .ov3-card {
+    background: linear-gradient(180deg, #15171C, #111318);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 18px;
+    box-shadow: 0 18px 45px rgba(0,0,0,.45);
+    color: #F2F4F8;
+    overflow: hidden;
+    padding: 18px 16px;
+    position: relative;
+  }
+  
+  /* TAG (badge) – compacta, bem posicionada */
+  .ov3-tag {
     position: absolute;
     top: 10px;
-    left: 10px;          /* fixa à esquerda */
-    right: auto;
-  
-    padding: .42rem .9rem;
-    border-radius: 999px;
-    text-transform: uppercase;
-    letter-spacing: .02em;
-    font-weight: 900;
+    left: 12px;
+    background: linear-gradient(180deg, #E45A1F, #C24A1A);
     color: #fff;
-  
-    background: linear-gradient(180deg, var(--ov3-accent,#E45A1F), var(--ov3-accent-700,#C24A1A));
-    border: 1px solid rgba(255,255,255,.18);
-    box-shadow: 0 8px 18px rgba(228,90,31,.35), inset 0 -1px 0 rgba(255,255,255,.15);
+    font-weight: 900;
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 6px 16px rgba(228,90,31,0.35);
     z-index: 3;
   }
   
-  /* variações opcionais (se quiser) */
-  .ov3-card.is-popular .ov3-tag{
-    background: linear-gradient(180deg, #F07F36, #C7581F);
-  }
-  .ov3-card.is-best .ov3-tag{
-    background: linear-gradient(180deg, #E86D2E, #B84A17);
-  }
-  
-  /* mobile: pequeno ajuste de posição */
-  @media (max-width:480px){
-    .ov3-tag{ top:8px; left:8px; }
+  /* ===== TOPO: imagem | título | preço ===== */
+  .ov3-top {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px;
+    align-items: center;
+    margin-top: 24px; /* espaço p/ tag */
   }
   
-  /* Linha superior: thumb | títulos | preços */
-  .ov3-top{
-    display:grid;
-    grid-template-columns: auto minmax(0,1fr) auto; /* evita esmagar o meio */
-    gap:14px; align-items:center;
-    min-width:0;
+  /* Thumb */
+  .ov3-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    background: #0F1012;
+    border: 1px solid rgba(255,255,255,.1);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .ov3-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
-  /* Thumb maior p/ dar presença */
-  .ov3-thumb{
-    width:72px; height:72px; border-radius:14px; flex:0 0 72px;
-    background:#0F1012; border:1px solid var(--ov3-stroke);
-    display:grid; place-items:center; overflow:hidden;
+  /* Headings */
+  .ov3-headings h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 900;
   }
-  .ov3-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
-  
-  /* Títulos */
-  .ov3-headings{ min-width:0; }
-  .ov3-headings h3{ margin:0; font-size:1.5rem; font-weight:900; }
-  .ov3-headings .sub{ margin:4px 0 0; color:var(--ov3-muted); font-weight:800; }
-  
-  /* Preços (direita). Sem min-width rígido. */
-  .ov3-price{
-    display:grid; justify-items:end; text-align:right; gap:6px;
-  }
-  .ov3-perpack{
-    font-weight:900; line-height:1;
-    font-size:clamp(28px, 6vw, 40px); white-space:nowrap;
-  }
-  .ov3-perpack .curr{ font-size:.58em; opacity:.9; margin-right:2px; }
-  .ov3-perpack .per { font-size:.48em; color:var(--ov3-muted); font-weight:800; margin-left:6px; }
-  .ov3-line{ display:flex; gap:10px; align-items:center; }
-  .ov3-line span{ color:var(--ov3-muted); font-weight:800; }
-  .ov3-line strong{ font-size:1.02rem; }
-  .ov3-was s{ color:var(--ov3-weak); }
-  .ov3-save{
-    display:inline-flex; align-items:center; gap:.5rem;
-    background:rgba(228,90,31,.12);
-    color:#FFEDE3; border:1px solid rgba(228,90,31,.38);
-    padding:.42rem .7rem; border-radius:999px; font-weight:900;
+  .ov3-headings .sub {
+    margin: 3px 0 0;
+    color: #C9CDD6;
+    font-weight: 800;
   }
   
-  /* Tagline + divisor */
-  .ov3-tagline{ margin:12px 0 8px; font-weight:900; }
-  .ov3-rule{ height:1px; background:var(--ov3-soft); border:0; margin:10px 0 8px; }
-  
-  /* Gifts */
-  .ov3-gifts{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
-  .ov3-gift{
-    display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center;
-    background:#14161B; border:1px solid var(--ov3-stroke); border-radius:12px; padding:10px 12px;
+  /* Price — alinhado à direita */
+  .ov3-price {
+    display: grid;
+    justify-items: end;
+    text-align: right;
+    gap: 6px;
+    min-width: 150px;
   }
-  .ov3-gift .ico{
-    width:40px; height:40px; border-radius:9px; overflow:hidden;
-    border:1px solid var(--ov3-stroke); background:#0F1012; display:grid; place-items:center;
+  .ov3-perpack {
+    font-weight: 900;
+    line-height: 1;
+    font-size: clamp(28px, 5.2vw, 38px);
+    white-space: nowrap;
   }
-  .ov3-gift .ico img{ width:100%; height:100%; object-fit:cover; }
-  .ov3-gift .name{ font-weight:900; }
-  .ov3-gift .price{ white-space:nowrap; font-weight:900; }
-  .ov3-gift .price s{ color:var(--ov3-weak); margin-right:6px; }
-  
-  /* CTA */
-  .ov3-cta{
-    display:block; text-align:center; text-decoration:none; color:#fff;
-    margin-top:14px; padding:16px 18px; font-weight:900; letter-spacing:.02em;
-    border-radius:28px;
-    background:linear-gradient(180deg, var(--ov3-accent), var(--ov3-accent-700));
-    box-shadow:0 18px 40px rgba(228,90,31,.35);
+  .ov3-perpack .curr {
+    font-size: .6em;
+    opacity: .9;
+    margin-right: 2px;
   }
-  .ov3-cta:hover{ filter:brightness(1.05); }
-  
-  /* ===== Mobile refinements ===== */
-  @media (max-width:480px){
-    .ov3-card{ padding:14px 14px 16px; }
-    /* Preços vão para a 2ª linha (evita ficar espremido) */
-    .ov3-top{
-      grid-template-columns: auto minmax(0,1fr);
-      grid-template-areas:
-        "thumb title"
-        "price price";
-      row-gap:10px;
-    }
-    .ov3-thumb{ grid-area: thumb; width:68px; height:68px; }
-    .ov3-headings{ grid-area: title; }
-    .ov3-price{
-      grid-area: price;
-      justify-items:start;
-      text-align:left;
-    }
-    .ov3-perpack{ font-size:34px; }
-    .ov3-price .ov3-line{ gap:8px; }
-    .ov3-tag{ top:8px; right:8px; }
+  .ov3-perpack .per {
+    font-size: .5em;
+    color: #C9CDD6;
+    font-weight: 800;
+    margin-left: 4px;
+  }
+  .ov3-line {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .ov3-line span {
+    color: #C9CDD6;
+    font-weight: 800;
+  }
+  .ov3-line strong {
+    font-size: 1rem;
+  }
+  .ov3-was s {
+    color: #9AA0AE;
+  }
+  .ov3-save {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: rgba(228,90,31,.12);
+    color: #FFEDE3;
+    border: 1px solid rgba(228,90,31,.38);
+    padding: .35rem .65rem;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: .9rem;
   }
   
+  /* ===== Texto abaixo ===== */
+  .ov3-tagline {
+    margin: 12px 0 8px;
+    font-weight: 900;
+  }
+  .ov3-rule {
+    height: 1px;
+    background: rgba(255,255,255,.06);
+    border: 0;
+    margin: 10px 0 8px;
+  }
+  
+  /* ===== Gifts ===== */
+  .ov3-gifts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .ov3-gift {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    align-items: center;
+    background: #14161B;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    padding: 10px 12px;
+  }
+  .ov3-gift .ico {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.1);
+    background: #0F1012;
+    display: grid;
+    place-items: center;
+  }
+  .ov3-gift .ico img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .ov3-gift .name {
+    font-weight: 900;
+    font-size: .95rem;
+  }
+  .ov3-gift .price {
+    white-space: nowrap;
+    font-weight: 900;
+    font-size: .95rem;
+  }
+  .ov3-gift .price s {
+    color: #9AA0AE;
+    margin-right: 6px;
+  }
+  
+  /* ===== CTA ===== */
+  .ov3-cta {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    margin-top: 14px;
+    padding: 16px 18px;
+    font-weight: 900;
+    letter-spacing: .02em;
+    border-radius: 28px;
+    background: linear-gradient(180deg, #E45A1F, #C24A1A);
+    box-shadow: 0 18px 40px rgba(228,90,31,.35);
+    transition: transform .15s ease, filter .15s ease;
+  }
+  .ov3-cta:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+  
+  /* ===== Mobile refinamento ===== */
+  @media (max-width:560px) {
+    .ov3-card { padding: 14px 12px; }
+    .ov3-top { gap: 10px; margin-top: 20px; }
+    .ov3-thumb { width: 56px; height: 56px; }
+    .ov3-price { min-width: 120px; }
+    .ov3-perpack { font-size: 30px; }
+    .ov3-save { font-size: .85rem; padding: .3rem .6rem; }
+    .ov3-tag { font-size: .75rem; padding: .28rem .7rem; }
+  }
+
+
+
 
 /* ===== Highlights (clean / competitor style) ===== */
 :root{
