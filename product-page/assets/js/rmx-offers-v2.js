@@ -2,8 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Preços / links (mesmo dataset do seu rmx-offer.js)
     const KITS = {
-      one:  { was:199, total:39, href:"https://pay.gvitalabs.com/checkout/198194802:1", sku:"RMX-1" },
-      three:{ was:597, total:90, href:"https://pay.gvitalabs.com/checkout/198194803:1", sku:"RMX-3" },
+      one:  { was:199, total:49, href:"https://pay.gvitalabs.com/checkout/198194802:1", sku:"RMX-1" },
+      three:{ was:597, total:96, href:"https://pay.gvitalabs.com/checkout/198194803:1", sku:"RMX-3" },
       six:  { was:1188, total:150, href:"https://pay.gvitalabs.com/checkout/198194804:1", sku:"RMX-6" }
     };
     const fmt = n => `$${Number(n).toLocaleString()}`;
