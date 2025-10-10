@@ -29,21 +29,39 @@
   .ov3-card.is-best{ border-color:rgba(228,90,31,.35); }
   
   /* Tag no topo direita (não cobre os preços) */
-/* Tag SEMPRE no lado esquerdo */
-.ov3-tag{
-    top:8px; 
-    left:10px !important;
-    right:auto !important;
+  .ov3-card{ position: relative; }
+
+  .ov3-tag{
+    position: absolute;
+    top: 10px;
+    left: 10px;          /* fixa à esquerda */
+    right: auto;
+  
+    padding: .42rem .9rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    font-weight: 900;
+    color: #fff;
+  
+    background: linear-gradient(180deg, var(--ov3-accent,#E45A1F), var(--ov3-accent-700,#C24A1A));
+    border: 1px solid rgba(255,255,255,.18);
+    box-shadow: 0 8px 18px rgba(228,90,31,.35), inset 0 -1px 0 rgba(255,255,255,.15);
+    z-index: 3;
   }
   
-  /* No mobile, mantém à esquerda também */
+  /* variações opcionais (se quiser) */
+  .ov3-card.is-popular .ov3-tag{
+    background: linear-gradient(180deg, #F07F36, #C7581F);
+  }
+  .ov3-card.is-best .ov3-tag{
+    background: linear-gradient(180deg, #E86D2E, #B84A17);
+  }
+  
+  /* mobile: pequeno ajuste de posição */
   @media (max-width:480px){
-    .ov3-tag{
-      left:8px !important;
-      right:auto !important;
-    }
+    .ov3-tag{ top:8px; left:8px; }
   }
-  
   
   /* Linha superior: thumb | títulos | preços */
   .ov3-top{
