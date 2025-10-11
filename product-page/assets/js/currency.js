@@ -1,134 +1,149 @@
 // assets/js/currency.js
-(function () {
-    // --- 0) Override manual opcional: defina window.RMX_CURRENCY = 'EUR' antes deste script
-    var forced = (window.RMX_CURRENCY || '').toUpperCase();
-    if (!/^(USD|EUR|GBP)$/.test(forced)) forced = '';
+(() => {
+    const LS_KEY = 'rmx_currency'; // 'USD' | 'EUR' | 'GBP'
+    const DEBUG = false;
+    const log = (...a) => { if (DEBUG) console.log('[currency]', ...a); };
   
-    // --- 1) Preferência salva
-    var saved = (localStorage.getItem('cur') || '').toUpperCase();
-    if (!/^(USD|EUR|GBP)$/.test(saved)) saved = '';
+    // ---- Helpers -------------------------------------------------------------
+    const setCur = (cur) => { localStorage.setItem(LS_KEY, cur); return cur; };
+    const getParamCur = () => {
+      const m = /(?:\?|&)cur=(usd|eur|gbp)\b/i.exec(location.search);
+      return m ? m[1].toUpperCase() : null;
+    };
   
-    // --- 2) Detecta país pelo idioma
-    function detectRegionFromLanguages() {
-      var langs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).filter(Boolean);
-      for (var i = 0; i < langs.length; i++) {
-        var m = langs[i].match(/-([A-Z]{2})$/i);
-        if (m) return m[1].toUpperCase();
-      }
-      // fallback: às vezes locale vem aqui
-      var loc = (Intl.DateTimeFormat().resolvedOptions().locale || '');
-      var m2 = loc.match(/-([A-Z]{2})$/i);
-      return m2 ? m2[1].toUpperCase() : '';
-    }
-  
-    // --- 3) Detecta pela timezone
-    function detectRegionFromTZ() {
-      try {
-        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-        if (!tz) return '';
-        if (tz === 'Europe/London' || tz === 'Europe/Jersey' || tz === 'Europe/Guernsey' || tz === 'Europe/Isle_of_Man') return 'GB';
-        if (tz.startsWith('Europe/')) return 'EU'; // Trata como Eurozone genericamente
-      } catch (e) {}
-      return '';
-    }
-  
-    var region = detectRegionFromLanguages();
-    if (!region) region = detectRegionFromTZ();
-  
-    // --- 4) Mapa de Eurozone (país -> EUR)
-    var EURO = new Set([
-      'AT','BE','HR','CY','EE','FI','FR','DE','GR','IE','IT','LV','LT','LU','MT','NL','PT','SK','SI','ES'
+    // Países da zona do euro
+    const EURO_CC = new Set([
+      'AT','BE','CY','EE','FI','FR','DE','GR','IE','IT','LV','LT','LU','MT','NL','PT','SK','SI','ES'
     ]);
-    // Observação: se vier 'EU' do timezone, tratamos como Euro.
-    var GBP_COUNTRIES = new Set(['GB']);
+    // Timezones com GBP
+    const GBP_TZ = new Set(['Europe/London']); // inclui GB e territórios que usam esse TZ
+    // Alguns timezones europeus que NÃO são EUR (evita falso positivo)
+    const NON_EUR_TZ = new Set([
+      'Europe/London',      // GBP
+      'Europe/Zurich',      // CHF
+      'Europe/Geneva',      // CHF
+      'Europe/Copenhagen',  // DKK
+      'Europe/Stockholm',   // SEK
+      'Europe/Oslo',        // NOK
+      'Europe/Prague',      // CZK
+      'Europe/Bucharest',   // RON
+      'Europe/Budapest',    // HUF
+      'Europe/Warsaw',      // PLN
+      'Europe/Sofia',       // BGN
+      'Europe/Belgrade',    // RSD
+      'Europe/Kyiv',        // UAH
+      'Europe/Moscow'       // RUB
+    ]);
   
-    function decideCurrency() {
-      if (forced) return forced;
-      if (saved) return saved;
-      if (GBP_COUNTRIES.has(region)) return 'GBP';
-      if (region === 'EU' || EURO.has(region)) return 'EUR';
+    // ---- Detecção (prioriza timezone) ---------------------------------------
+    function detectCurrency() {
+      // 1) URL override (ótimo pra teste)
+      const q = getParamCur();
+      if (q) return q; // 'USD' | 'EUR' | 'GBP'
+  
+      // 2) Cache
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved === 'USD' || saved === 'EUR' || saved === 'GBP') return saved;
+  
+      // 3) Timezone primeiro (mais confiável)
+      let tz = '';
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch {}
+      if (tz) {
+        if (GBP_TZ.has(tz)) return 'GBP';
+        if (tz.startsWith('Europe/') && !NON_EUR_TZ.has(tz)) return 'EUR';
+      }
+  
+      // 4) Fallback: região do locale
+      let region = null;
+      try {
+        const lang = (navigator.languages && navigator.languages[0]) || navigator.language || 'en-US';
+        try { region = new Intl.Locale(lang).maximize().region || null; } catch {}
+        if (!region) {
+          const loc = Intl.DateTimeFormat().resolvedOptions().locale || '';
+          const m = /-([A-Z]{2})\b/.exec(loc);
+          region = m ? m[1] : null;
+        }
+      } catch {}
+  
+      if (region === 'GB') return 'GBP';
+      if (region && EURO_CC.has(region)) return 'EUR';
+  
+      // 5) Default
       return 'USD';
     }
   
-    var cur = decideCurrency();
-    localStorage.setItem('cur', cur);
+    // ---- Aplicação do símbolo (apenas símbolo, não mexe no número) ----------
+    function applySymbol(cur) {
+      const SYM = cur === 'EUR' ? '€' : cur === 'GBP' ? '£' : '$';
   
-    var MAP = { USD: '$', EUR: '€', GBP: '£' };
-    var SYM = MAP[cur];
+      // (A) elementos dedicados <span class="curr">
+      document.querySelectorAll('.curr').forEach(el => { el.textContent = SYM; });
   
-    // --- 5) Alvos que existem no seu HTML
-    var TARGETS = [
-      // Offers v3
-      '.ov3-perpack',           // ex.: <span class="curr">$</span>49
-      '.ov3-line strong',       // Totals
-      '.ov3-save',              // "Save $xxx"
-      '.ov3-gift .price',       // bônus: <s>$15.00</s> FREE
+      // (B) troca símbolos em textos visíveis dentro das áreas do site
+      // Evita mexer em <script>, <style> e inputs.
+      const scopes = document.querySelectorAll(`
+        .rmx-offer,
+        .rmx-offers-v2,
+        .rmx-offers-v3,
+        .hl,
+        .proof,
+        .wte,
+        .cmp,
+        .rmx-authority,
+        .rm-testimonials,
+        .rmx-guarantee-section,
+        .mech
+      `);
   
-      // Seções antigas (se existirem)
-      '.rmx-price-now',
-      '.rmx-price-was',
-      '#rmxTotal',
-      '#rmxSave'
-    ];
+      const replaceInNode = (node) => {
+        if (!node || !node.nodeValue) return;
+        if (!/[$€£]/.test(node.nodeValue)) return;
+        node.nodeValue = node.nodeValue.replace(/[$€£]/g, SYM);
+      };
   
-    // --- 6) Regras de substituição
-    // 6.a) Trocar <span class="curr">$</span> (ou €/£) pelo símbolo detectado
-    function fixCurrSpans(scope) {
-      scope.querySelectorAll('.curr').forEach(function (el) {
-        var t = (el.textContent || '').trim();
-        if (t === '$' || t === '€' || t === '£') el.textContent = SYM;
-      });
-    }
-  
-    // 6.b) Em outros textos, trocar SOMENTE quando tiver símbolo seguido de número
-    //     Mantém unidades, palavras e sufixos intocados.
-    var RE = /(^|\s)([$€£])(?=\d)/g;
-    function swapTextNodes(el) {
-      for (var i = 0; i < el.childNodes.length; i++) {
-        var n = el.childNodes[i];
-        if (n.nodeType === 3) {
-          var before = n.nodeValue;
-          var after = before.replace(RE, function (m, p1/*space*/, p2/*simbolo*/) {
-            return p1 + SYM;
-          });
-          if (after !== before) n.nodeValue = after;
-        }
-      }
-    }
-  
-    function run(scope) {
-      try {
-        fixCurrSpans(scope);
-        TARGETS.forEach(function (sel) {
-          scope.querySelectorAll(sel).forEach(function (el) {
-            swapTextNodes(el);
-            el.querySelectorAll('s, b, strong, i, span').forEach(swapTextNodes);
-          });
+      scopes.forEach(root => {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+          acceptNode: (n) => {
+            const p = n.parentNode && n.parentNode.nodeName;
+            if (p === 'SCRIPT' || p === 'STYLE') return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+          }
         });
-        // útil para depurar no inspector
-        document.documentElement.setAttribute('data-cur', cur);
-      } catch (e) {
-        console.warn('[currency] erro:', e);
-      }
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(replaceInNode);
+      });
+  
+      // (C) titles/aria-label (UX)
+      document.querySelectorAll('[title],[aria-label]').forEach(el => {
+        if (el.title && /[$€£]/.test(el.title)) el.title = el.title.replace(/[$€£]/g, SYM);
+        const ar = el.getAttribute('aria-label');
+        if (ar && /[$€£]/.test(ar)) el.setAttribute('aria-label', ar.replace(/[$€£]/g, SYM));
+      });
     }
   
-    // --- 7) Execução inicial
-    function ready(fn){document.readyState==='loading'?document.addEventListener('DOMContentLoaded',fn):fn();}
-    ready(function(){ run(document); });
+    // ---- Boot ---------------------------------------------------------------
+    function init() {
+      const cur = detectCurrency();
+      setCur(cur);
+      applySymbol(cur);
   
-    // --- 8) Se conteúdo for injetado depois (ex.: carrossel lazy, tabs), reprocessa de leve
-    var mo = new MutationObserver(function (muts) {
-      // Reprocessa só o nó do mutation (barato e suficiente)
-      muts.forEach(function (m) {
-        if (m.addedNodes) {
-          m.addedNodes.forEach(function (node) {
-            if (node.nodeType === 1) run(node);
-          });
+      // helper p/ console
+      window.__setCurrency = (c) => {
+        c = String(c || '').toUpperCase();
+        if (!['USD','EUR','GBP'].includes(c)) {
+          console.warn('Use "USD", "EUR" ou "GBP"');
+          return;
         }
-      });
-    });
-    try {
-      mo.observe(document.body, { childList: true, subtree: true });
-    } catch (e) {}
+        setCur(c);
+        applySymbol(c);
+      };
+    }
+  
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
   })();
   
